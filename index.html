@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santos Agape — Palavra do Dia &amp; Santo do Dia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink-bg:#1b1712;
+    --ink-bg-2:#221d17;
+    --vellum:#ece1c6;
+    --vellum-dim:#c9bb9a;
+    --gold:#c9a227;
+    --gold-soft:#8f7a3a;
+    --rule:#3a3226;
+    --green:#3e7c59;
+    --violet:#6a4a86;
+    --red:#9c3b3b;
+    --white-gold:#e9c874;
+    --shadow: 0 20px 60px rgba(0,0,0,0.45);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(ellipse at 20% -10%, #2a2318 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 110%, #241f16 0%, transparent 55%),
+      var(--ink-bg);
+    color:var(--vellum);
+    font-family:'EB Garamond', serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:40px 18px 60px;
+  }
+  .page{
+    width:100%;
+    max-width:640px;
+  }
+  .rubric{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:center;
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color: var(--season-color, var(--gold));
+    margin-bottom:6px;
+  }
+  .rubric .dot{
+    width:9px;height:9px;border-radius:50%;
+    background:var(--season-color, var(--gold));
+    box-shadow:0 0 8px var(--season-color, var(--gold));
+  }
+  .datehead{
+    text-align:center;
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:.06em;
+    color:var(--vellum-dim);
+    text-transform:capitalize;
+    margin-bottom:28px;
+  }
+  .brand{
+    text-align:center;
+    font-family:'Cinzel', serif;
+    font-weight:700;
+    font-size:26px;
+    letter-spacing:.07em;
+    color:var(--vellum);
+    margin:0 0 2px;
+  }
+  .brand span{color:var(--gold);}
+  .tagline{
+    text-align:center;
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    color:var(--vellum-dim);
+    letter-spacing:.06em;
+    margin-bottom:34px;
+  }
+  .card{
+    background:linear-gradient(180deg, var(--ink-bg-2), #1e1a13);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:34px 30px 28px;
+    margin-bottom:26px;
+    position:relative;
+    box-shadow: var(--shadow);
+  }
+  .card::before{
+    content:"";
+    position:absolute; left:0; top:0; bottom:0;
+    width:3px;
+    background:var(--season-color, var(--gold));
+  }
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--rule);
+  }
+  .verse-text{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:24px;
+    line-height:1.5;
+    color:var(--vellum);
+    margin:0 0 14px;
+  }
+  .verse-ref{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    letter-spacing:.04em;
+    color:var(--gold-soft);
+    margin-bottom:22px;
+  }
+  .gospel-icon{
+    display:flex;
+    justify-content:center;
+    margin-bottom:18px;
+  }
+  .gospel-icon svg{ width:64px; height:64px; }
+  .gospel-ref{
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    font-size:17px;
+    color:var(--vellum);
+    text-align:center;
+    margin:0 0 4px;
+  }
+  .gospel-theme{
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    letter-spacing:.04em;
+    color:var(--gold-soft);
+    text-align:center;
+    margin-bottom:18px;
+  }
+  .gospel-summary{
+    font-size:17px;
+    line-height:1.75;
+    color:var(--vellum-dim);
+    margin:0 0 20px;
+    text-align:left;
+  }
+  .gospel-summary .vnum{
+    font-family:'Inter',sans-serif;
+    font-size:10px;
+    font-weight:600;
+    color:var(--gold);
+    vertical-align:super;
+    margin-right:1px;
+  }
+  .gospel-reflection{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:16px;
+    line-height:1.6;
+    color:var(--gold-soft);
+    border-left:2px solid var(--season-color, var(--gold));
+    padding-left:14px;
+    margin:0;
+  }
+  a.pill{
+    text-decoration:none;
+  }
+  .saint-name{
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    font-size:22px;
+    color:var(--vellum);
+    margin:0 0 4px;
+    line-height:1.25;
+  }
+  .saint-title{
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    letter-spacing:.05em;
+    color:var(--gold-soft);
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .saint-blurb{
+    font-size:18px;
+    line-height:1.6;
+    color:var(--vellum-dim);
+    margin:0;
+  }
+  .actions{
+    display:flex;
+    gap:10px;
+    margin-top:22px;
+    flex-wrap:wrap;
+  }
+  button.pill{
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    letter-spacing:.04em;
+    background:transparent;
+    border:1px solid var(--rule);
+    color:var(--vellum-dim);
+    padding:9px 16px;
+    border-radius:100px;
+    cursor:pointer;
+    transition:.15s;
+    display:flex; align-items:center; gap:6px;
+  }
+  button.pill:hover{ border-color:var(--gold-soft); color:var(--vellum); }
+  button.pill.active{ border-color:var(--gold); color:var(--gold); }
+  button.pill:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+
+  .streak{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    color:var(--vellum-dim);
+    margin-bottom:26px;
+    letter-spacing:.03em;
+  }
+  .streak b{color:var(--gold);}
+
+  .fav-panel{
+    display:none;
+  }
+  .fav-panel.open{ display:block; }
+  .fav-item{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--vellum-dim);
+    border-bottom:1px solid var(--rule);
+    padding:10px 0;
+  }
+  .fav-item .ref{
+    display:block;
+    font-family:'Inter',sans-serif;
+    font-style:normal;
+    font-size:11px;
+    color:var(--gold-soft);
+    margin-top:4px;
+  }
+  .empty{
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    color:var(--vellum-dim);
+    text-align:center;
+    padding:10px 0;
+  }
+
+  footer{
+    text-align:center;
+    font-family:'Inter',sans-serif;
+    font-size:11.5px;
+    line-height:1.7;
+    color:var(--vellum-dim);
+    opacity:.75;
+    margin-top:10px;
+  }
+  footer .gold{ color:var(--gold-soft); }
+
+  @media (max-width:480px){
+    .card{ padding:26px 20px 22px; }
+    .verse-text{ font-size:21px; }
+    .brand{ font-size:21px; }
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .card{ animation: rise .5s ease both; }
+    .card:nth-of-type(2){ animation-delay:.08s; }
+  }
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(10px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="rubric" id="rubric"><span class="dot"></span><span id="rubricText">Tempo Comum</span></div>
+  <div class="datehead" id="dateHead">—</div>
+
+  <h1 class="brand">Santos <span>Agape</span></h1>
+  <div class="tagline">Palavra do Dia · Santo do Dia</div>
+
+  <div class="streak" id="streakBox"></div>
+
+  <!-- GOSPEL CARD -->
+  <div class="card">
+    <div class="eyebrow">Evangelho do dia</div>
+    <div class="gospel-icon" id="gospelIcon"></div>
+    <p class="gospel-ref" id="gospelRef">—</p>
+    <p class="gospel-theme" id="gospelTheme">—</p>
+    <p class="gospel-summary" id="gospelSummary">—</p>
+    <p class="gospel-reflection" id="gospelReflection"></p>
+  </div>
+
+  <!-- VERSE CARD -->
+  <div class="card">
+    <div class="eyebrow">Palavra do dia · versículo</div>
+    <p class="verse-text" id="verseText">"..."</p>
+    <div class="verse-ref" id="verseRef">—</div>
+    <div class="actions">
+      <button class="pill" id="favBtn">♡ Guardar este versículo</button>
+      <button class="pill" id="showFavsBtn">Ver guardados</button>
+    </div>
+    <div class="fav-panel" id="favPanel"></div>
+  </div>
+
+  <!-- SAINT CARD -->
+  <div class="card">
+    <div class="eyebrow">Santo do dia</div>
+    <p class="saint-name" id="saintName">—</p>
+    <p class="saint-title" id="saintTitle">—</p>
+    <p class="saint-blurb" id="saintBlurb">—</p>
+  </div>
+
+  <footer>
+    Feito com fé. Este é o começo — em breve: lembretes diários, calendário completo do ano,<br>
+    histórias mais longas dos santos e busca por tema. <span class="gold">Volte amanhã ✝</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+
+  // ---------- DATA: VERSES ----------
+  const VERSES = [
+    {ref:"João 3:16", text:"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna."},
+    {ref:"Salmos 23:1", text:"O Senhor é o meu pastor; nada me faltará."},
+    {ref:"Filipenses 4:13", text:"Posso todas as coisas naquele que me fortalece."},
+    {ref:"Provérbios 3:5-6", text:"Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento."},
+    {ref:"Isaías 41:10", text:"Não temas, porque eu sou contigo; não te assombres, porque eu sou o teu Deus."},
+    {ref:"Romanos 8:28", text:"Sabemos que todas as coisas contribuem juntamente para o bem daqueles que amam a Deus."},
+    {ref:"Josué 1:9", text:"Sê forte e corajoso; não temas, nem te espantes, porque o Senhor teu Deus é contigo por onde quer que andares."},
+    {ref:"Salmos 46:1", text:"Deus é o nosso refúgio e fortaleza, socorro bem presente na angústia."},
+    {ref:"Mateus 11:28", text:"Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei."},
+    {ref:"Jeremias 29:11", text:"Porque eu bem sei os pensamentos que penso a vosso respeito, pensamentos de paz e não de mal, para vos dar o fim que esperais."},
+    {ref:"Gálatas 2:20", text:"Já não sou eu quem vive, mas Cristo vive em mim."},
+    {ref:"1 Coríntios 13:4", text:"O amor é paciente, é benigno; o amor não é invejoso; não se ufana, não se ensoberbece."},
+    {ref:"Salmos 27:1", text:"O Senhor é a minha luz e a minha salvação; a quem temerei?"},
+    {ref:"Mateus 6:33", text:"Buscai primeiro o Reino de Deus e a sua justiça, e todas essas coisas vos serão acrescentadas."},
+    {ref:"Filipenses 4:6", text:"Não estejais inquietos por coisa alguma; antes, em tudo sejam conhecidas as vossas petições diante de Deus."},
+    {ref:"Romanos 12:2", text:"Não vos conformeis com este século, mas transformai-vos pela renovação do vosso entendimento."},
+    {ref:"Efésios 2:8", text:"Pela graça sois salvos, mediante a fé; e isto não vem de vós, é dom de Deus."},
+    {ref:"2 Coríntios 12:9", text:"A minha graça te basta, porque o meu poder se aperfeiçoa na fraqueza."},
+    {ref:"Salmos 118:24", text:"Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele."},
+    {ref:"Provérbios 16:3", text:"Entrega ao Senhor as tuas obras, e teus pensamentos serão estabelecidos."},
+    {ref:"Mateus 5:14", text:"Vós sois a luz do mundo; não se pode esconder uma cidade edificada sobre um monte."},
+    {ref:"João 14:6", text:"Eu sou o caminho, e a verdade e a vida; ninguém vem ao Pai senão por mim."},
+    {ref:"Salmos 34:18", text:"Perto está o Senhor dos que têm o coração quebrantado, e salva os contritos de espírito."},
+    {ref:"Isaías 40:31", text:"Os que esperam no Senhor renovarão as forças, subirão com asas como águias."},
+    {ref:"Hebreus 11:1", text:"Ora, a fé é o firme fundamento das coisas que se esperam, e a prova das coisas que se não veem."},
+    {ref:"Tiago 1:5", text:"Se algum de vós tem falta de sabedoria, peça-a a Deus, que a todos dá liberalmente, e o não lança em rosto."},
+    {ref:"1 Pedro 5:7", text:"Lançando sobre ele toda a vossa ansiedade, porque ele tem cuidado de vós."},
+    {ref:"Salmos 91:1", text:"Aquele que habita no esconderijo do Altíssimo, à sombra do Onipotente descansará."},
+    {ref:"Mateus 28:20", text:"E eis que eu estou convosco todos os dias, até a consumação dos séculos."},
+    {ref:"João 8:12", text:"Eu sou a luz do mundo; quem me segue não andará em trevas, mas terá a luz da vida."},
+    {ref:"Romanos 15:13", text:"Ora, o Deus de esperança vos encha de todo o gozo e paz em crença."},
+    {ref:"Salmos 37:4", text:"Deleita-te também no Senhor, e te concederá os desejos do teu coração."},
+    {ref:"Provérbios 22:6", text:"Ensina a criança no caminho em que deve andar, e até quando envelhecer não se desviará dele."},
+    {ref:"Filipenses 4:19", text:"O meu Deus, segundo as suas riquezas, suprirá todas as vossas necessidades em glória por Cristo Jesus."},
+    {ref:"Salmos 121:1", text:"Elevo os meus olhos para os montes; de onde vem o meu socorro?"},
+    {ref:"Mateus 7:7", text:"Pedi, e dar-se-vos-á; buscai, e encontrareis; batei, e abrir-se-vos-á."},
+    {ref:"1 João 4:18", text:"No amor não há temor, antes o perfeito amor lança fora o temor."},
+    {ref:"Gálatas 5:22", text:"Mas o fruto do Espírito é: amor, gozo, paz, longanimidade, benignidade, bondade, fé, mansidão, temperança."},
+    {ref:"Colossenses 3:23", text:"E tudo quanto fizerdes, fazei-o de todo o coração, como ao Senhor, e não aos homens."},
+    {ref:"Salmos 23:4", text:"Ainda que eu andasse pelo vale da sombra da morte, não temeria mal algum, porque tu estás comigo."},
+    {ref:"João 15:5", text:"Eu sou a videira, vós as varas; quem permanece em mim, e eu nele, este dá muito fruto."},
+    {ref:"Efésios 6:11", text:"Revesti-vos de toda a armadura de Deus, para que possais estar firmes contra as ciladas do diabo."},
+    {ref:"Salmos 139:14", text:"Eu te louvarei, porque de um modo terrível e maravilhoso fui formado."},
+    {ref:"1 Coríntios 10:13", text:"Fiel é Deus, que não deixará que sejais tentados acima do que podeis suportar."},
+    {ref:"Mateus 5:9", text:"Bem-aventurados os pacificadores, porque eles serão chamados filhos de Deus."},
+    {ref:"Salmos 51:10", text:"Cria em mim, ó Deus, um coração puro, e renova em mim um espírito reto."},
+    {ref:"Isaías 43:2", text:"Quando passares pelas águas, eu serei contigo; e quando pelos rios, eles não te submergirão."},
+    {ref:"Lucas 1:37", text:"Porque para Deus nada é impossível."},
+    {ref:"João 10:10", text:"Eu vim para que tenham vida, e a tenham com abundância."},
+    {ref:"Salmos 16:11", text:"Tu me farás ver a vereda da vida; na tua presença há fartura de alegrias."},
+    {ref:"Tiago 4:8", text:"Chegai-vos a Deus, e ele se chegará a vós."},
+    {ref:"Miqueias 6:8", text:"Que é o que o Senhor pede de ti, senão que pratiques a justiça, e ames a beneficência, e andes humildemente com o teu Deus?"},
+    {ref:"Salmos 103:2", text:"Bendize, ó minha alma, ao Senhor, e não te esqueças de nenhum de seus benefícios."},
+    {ref:"Apocalipse 21:4", text:"E Deus limpará de seus olhos toda lágrima; e não haverá mais morte, nem pranto, nem clamor, nem dor."},
+    {ref:"Mateus 25:40", text:"Todas as vezes que o fizestes a um destes meus pequeninos irmãos, a mim o fizestes."},
+    {ref:"Salmos 34:8", text:"Provai, e vede que o Senhor é bom; bem-aventurado o homem que nele confia."},
+    {ref:"João 1:5", text:"E a luz resplandece nas trevas, e as trevas não prevaleceram contra ela."},
+    {ref:"Efésios 4:32", text:"Sede uns para com os outros benignos, misericordiosos, perdoando-vos uns aos outros."},
+    {ref:"Salmos 62:1", text:"Somente em Deus repousa a minha alma; dele vem a minha salvação."},
+    {ref:"Provérbios 18:10", text:"Torre forte é o nome do Senhor; correm para ela os justos, e estão seguros."},
+  ];
+
+  // ---------- DATA: SAINTS (month-day -> [name, title, customBlurb|null]) ----------
+  const SAINTS = {
+"01-01":["Santa Maria, Mãe de Deus","Solenidade","O ano começa com o título mais antigo e mais alto dado a Maria: Theótokos, a que gerou Deus. O Concílio de Éfeso, no ano 431, definiu essa verdade para responder a quem negava a plena divindade de Cristo. Ao afirmar que Maria é Mãe de Deus, a Igreja está, na verdade, defendendo quem é Jesus: verdadeiro Deus e verdadeiro homem, unidos numa só Pessoa desde o ventre materno. Maria disse sim sem entender tudo, e esse sim tornou-se a porta pela qual Deus entrou na história humana. Ela guardava todas as coisas, meditando-as no coração, ensinando-nos que a fé também se vive em silêncio e espera. Abrir o ano com esta solenidade é colocar os próximos doze meses sob o olhar de uma mãe. É também o Dia Mundial da Paz, lembrando que toda paz verdadeira nasce de um coração disposto a acolher a vontade de Deus, como Maria acolheu. Que este ano novo comece, então, como começou a salvação: com um sim confiante."],
+"01-02":["São Basílio Magno e São Gregório Nazianzo","bispos e doutores da Igreja","Amigos desde os tempos de estudo em Atenas, os dois capadócios se tornaram dois dos maiores teólogos do século IV. Basílio organizou a vida monástica no Oriente com uma Regra que ainda hoje orienta mosteiros ortodoxos, e como bispo de Cesareia defendeu com firmeza a divindade do Espírito Santo diante do arianismo. Fundou também um enorme complexo de assistência aos pobres, doentes e peregrinos, conhecido como a 'Basileíade' — um hospital antes mesmo de existir a palavra. Gregório, mais contemplativo e poeta, relutava em aceitar cargos eclesiásticos, mas acabou sendo convocado como Patriarca de Constantinopla, onde pregou discursos teológicos de rara profundidade sobre a Santíssima Trindade. Ambos sofreram oposição e exílios por defenderem a ortodoxia da fé de Niceia num tempo de grande confusão doutrinal. A amizade entre eles é lembrada como modelo de como a fé pode ser vivida em comunhão, não isoladamente. Juntos, ajudaram a dar à Igreja a linguagem precisa com que ainda hoje professamos o Credo. São celebrados juntos porque juntos lutaram, estudaram e serviram a mesma verdade."],
+"01-03":["Santa Genoveva","padroeira de Paris","Ainda menina, Genoveva consagrou sua vida a Deus depois de ouvir uma pregação de Santo Germano de Auxerre, que reconheceu nela um chamado especial. Viveu em Paris no século V, numa época de grande instabilidade, quando os hunos de Átila avançavam sobre a Gália. Quando os parisienses queriam fugir em pânico, Genoveva os convenceu a permanecer e confiar em oração — e a cidade acabou poupada da invasão. Anos depois, durante um cerco da cidade por outro exército, ela organizou o transporte de alimentos pelo rio Sena para socorrer a população faminta, arriscando a própria vida. Era conhecida por longos jejuns e vigílias de oração, além de grande caridade com os mais pobres. Sua coragem cívica, unida à vida espiritual profunda, fez dela uma figura amada muito além dos círculos religiosos. Tornou-se, com o tempo, padroeira de Paris, e até hoje uma colina da cidade leva seu nome. Genoveva mostra que a santidade pode se expressar tanto na oração escondida quanto na coragem pública diante do perigo."],
+"01-04":["São Tito","bispo, discípulo de São Paulo","Grego de nascimento e, portanto, gentio não circuncidado, Tito tornou-se um dos colaboradores mais próximos e confiáveis do apóstolo Paulo. Paulo o levou como exemplo vivo ao Concílio de Jerusalém, provando que a salvação em Cristo não exigia primeiro tornar-se judeu. Foi enviado por Paulo em missões delicadas, como reconciliar a comunidade de Corinto depois de um conflito grave, tarefa que exigia enorme tato e firmeza ao mesmo tempo. Mais tarde, Paulo o deixou responsável por organizar a Igreja em Creta, nomeando presbíteros e cuidando da vida das comunidades locais — missão registrada na Carta a Tito, no Novo Testamento. Essa carta revela o perfil que Paulo esperava dele: um homem de conduta sólida, capaz de ensinar com autoridade e exemplo. A tradição o considera o primeiro bispo de Creta, onde teria vivido até idade avançada. Seu nome aparece repetidas vezes nas cartas paulinas como sinal de gratidão e afeto verdadeiro. Tito representa os discípulos silenciosos que sustentam grandes missões sem nunca buscar destaque para si."],
+"01-05":["Santa Apolinária","virgem e mártir","Pouco se sabe com certeza histórica sobre os detalhes da vida de Apolinária, como acontece com muitas mártires dos primeiros séculos cristãos. A tradição a recorda como uma jovem que, diante da escolha entre negar a Cristo ou perder a vida, preferiu permanecer fiel até o fim. Seu nome foi preservado ao longo dos séculos precisamente por essa fidelidade, num tempo em que ser cristão podia custar a própria vida. As mártires desse período raramente deixaram registros escritos: o que restou é a memória viva da comunidade que as venerou como intercessoras. A Igreja guarda seu nome não pelos detalhes biográficos, mas pelo testemunho que ele representa. Lembrar Apolinária é lembrar as inúmeras mulheres anônimas da fé cristã antiga cuja coragem sustentou a Igreja nascente. Sua memória convida a uma reflexão simples: nem toda santidade precisa de uma biografia detalhada para ser real. Basta, muitas vezes, um nome guardado com amor e um exemplo de fidelidade que atravessa os séculos."],
+"01-06":["Santa Rafaela Maria do Sagrado Coração","religiosa, fundadora","Nascida na Espanha em 1850, Rafaela Porras sentiu desde jovem um chamado profundo à vida consagrada, apesar da oposição inicial da família. Fundou, ainda jovem, o Instituto das Escravas do Sagrado Coração de Jesus, dedicado à educação e à adoração eucarística. A congregação cresceu rapidamente, mas Rafaela viveu uma dolorosa provação: acusações internas levaram-na a ser afastada do governo da própria obra que havia fundado. Aceitou essa humilhação sem amargura, vivendo os últimos trinta anos de vida numa simples cela do convento em Roma, dedicada à oração e ao trabalho manual, sem jamais reclamar do que sofrera. Essa longa noite de esquecimento voluntário revelou uma santidade mais profunda do que qualquer sucesso visível. Só depois de sua morte, em 1925, a verdade sobre as acusações veio à luz, restaurando sua memória. É lembrada como exemplo raro de humildade heroica diante da injustiça vivida dentro da própria Igreja. Sua vida ensina que perdoar e permanecer fiel, mesmo sem reconhecimento, é também um caminho seguro de santidade."],
+"01-07":["São Raimundo de Penhaforte","presbítero","Nascido na Catalunha por volta de 1175, Raimundo foi um dos maiores juristas canônicos da história da Igreja. Entrou para a Ordem dos Dominicanos já adulto, depois de uma sólida formação em Direito, e foi convocado pelo Papa Gregório IX para organizar e sistematizar as leis canônicas da Igreja num único código coerente — as Decretais, que vigoraram por séculos. Foi também confessor de reis e conselheiro em questões delicadas de justiça e moral. Como Mestre Geral dos Dominicanos, reformou as constituições da Ordem e incentivou fortemente o estudo de línguas para a missão entre muçulmanos e judeus na península Ibérica, chegando a pedir a Santo Tomás de Aquino que escrevesse uma obra de apologética para esse fim. Viveu com grande austeridade apesar de sua proximidade com o poder e com os grandes centros de decisão da Igreja. Morreu com quase cem anos de idade, tendo servido a Igreja por mais de sete décadas. É considerado o patrono dos advogados e canonistas até hoje. Sua vida mostra que a inteligência jurídica também pode ser colocada inteiramente a serviço da misericórdia e da justiça de Deus."],
+"01-08":["São Lourenço Justiniano","bispo","Nascido em Veneza numa família nobre em 1381, Lourenço abandonou cedo os privilégios da sua classe social para seguir uma vida de austeridade e oração. Ingressou nos Cônegos Regulares de São Jorge de Alga, onde se destacou por sua vida de penitência e profunda oração contemplativa. Tornou-se bispo de Veneza numa época de reformas na Igreja, e foi o primeiro a ostentar o título de Patriarca de Veneza, criado especialmente para ele. Como bispo, dedicou-se à reforma do clero e à instrução simples e direta do povo, insistindo sempre que a pregação deveria nascer de uma vida de oração autêntica. Recusava luxos episcopais, mantendo os hábitos simples de sua vida religiosa anterior mesmo depois de tornar-se patriarca. Escreveu obras espirituais de grande profundidade sobre a vida interior e a união com Deus. É lembrado como ponte entre o rigor monástico e a responsabilidade pastoral de guiar uma grande diocese. Sua vida ensina que autoridade e humildade podem, e devem, caminhar juntas."],
+"01-09":["São Julião","mártir","A Igreja guarda hoje a memória de um mártir chamado Julião, nome que se repete entre diversos santos dos primeiros séculos do cristianismo. Como acontece com muitos mártires dessa época, poucos detalhes precisos sobreviveram além do essencial: a fidelidade até a morte. O que se preservou ao longo dos séculos não foi uma biografia detalhada, mas a certeza de uma vida entregue por causa de Cristo. Esses mártires, muitas vezes leigos comuns, sustentaram a Igreja nascente com seu exemplo silencioso mais do que com grandes discursos. A antiga prática da Igreja de guardar o nome dos mártires nos calendários litúrgicos nasceu justamente do desejo de nunca esquecer esse preço pago pela fé. Mesmo sem muitos detalhes, comemorar Julião é reconhecer que a história da Igreja foi tecida por milhares de pessoas cujos nomes quase se perderam, mas cuja fidelidade permaneceu. É um convite a refletir sobre a própria fidelidade cotidiana, ainda que discreta e sem registro. A santidade nem sempre deixa muitos vestígios — mas nunca deixa de ter valor diante de Deus."],
+"01-10":["Beato Gonçalo de Amarante","presbítero","Nascido em Portugal por volta de 1187, Gonçalo dedicou boa parte da juventude a uma vida sacerdotal comum, até decidir peregrinar a Jerusalém e depois a Roma, buscando uma conversão mais radical. Ao voltar, entrou para a Ordem dos Pregadores, os dominicanos, já em idade avançada, e passou a viver com grande simplicidade em Amarante, no norte de Portugal. É lembrado por ter construído, com as próprias mãos e a ajuda dos moradores locais, uma ponte sobre o rio Tâmega, facilitando a vida da população — um gesto concreto de caridade que uniu fé e serviço prático. Tornou-se também conhecido por sua alegria contagiante e pela devoção popular que despertava, sendo procurado até hoje, sobretudo por quem busca ajuda para encontrar um bom casamento, tradição popular ligada à festa em sua honra em junho. Viveu seus últimos anos dedicado à oração e à assistência aos pobres da região. Morreu por volta de 1259, deixando uma devoção que atravessou séculos na cultura popular portuguesa. É um exemplo de como um chamado pode amadurecer tardiamente, mas ainda assim gerar frutos duradouros. Sua vida lembra que nunca é tarde para responder com radicalidade ao convite de Deus."],
+"01-11":["São Bernardo Scammacca","presbítero","Nascido em Catânia, na Sicília, no século XIV, Bernardo teve uma juventude marcada por excessos e uma vida bastante afastada da fé. Um grave ferimento sofrido numa briga o levou a repensar profundamente sua existência, e essa crise tornou-se o ponto de partida de uma conversão radical. Entrou para a Ordem dos Dominicanos, buscando reparar com penitência os anos vividos longe de Deus. Dedicou o restante da vida à oração intensa e à mortificação, buscando uma purificação interior que correspondesse à gravidade de sua conversão. Tornou-se conhecido pela comunidade local por sua humildade e pela transformação visível de caráter, um contraste marcante com a fama que tivera na juventude. É lembrado, sobretudo, como sinal de esperança para quem sente que sua vida passada é longe demais de Deus para ser resgatada. Sua história mostra que nenhuma trajetória está fechada à graça, por mais desviada que pareça no começo. Bernardo tornou-se, séculos depois, um pequeno mas significativo testemunho local da misericórdia que restaura."],
+"01-12":["São Bento Biscop","abade","Nascido na Nortúmbria, na Inglaterra, no século VII, Bento Biscop deixou uma posição de destaque na corte real para dedicar-se à vida monástica depois de peregrinar a Roma. Fez ao todo cinco viagens a Roma, algo extraordinário para a época, trazendo de volta livros, relíquias, obras de arte e até um mestre de canto gregoriano para formar os monges ingleses na liturgia romana. Fundou dois mosteiros importantes, Wearmouth e Jarrow, que se tornariam centros de estudo e cópia de manuscritos fundamentais para a preservação do conhecimento na Alta Idade Média. Foi justamente em Jarrow que se formou, gerações depois, o monge historiador São Beda, o Venerável, herdeiro direto dessa rica biblioteca reunida por Bento Biscop. Sua paixão por trazer cultura, arte e boa liturgia para a Inglaterra ajudou a consolidar o cristianismo na ilha de modo profundo e duradouro. Viveu os últimos anos de vida paralisado, mas continuou governando o mosteiro com lucidez e exigindo que a disciplina monástica fosse mantida com rigor. Sua vida mostra como amor à beleza, ao estudo e à liturgia pode ser, também, uma forma concreta de evangelizar uma cultura inteira. Bento Biscop lembra que preservar e transmitir conhecimento é, também, um serviço à fé."],
+"01-13":["Santo Hilário de Poitiers","bispo e doutor da Igreja","Nascido numa família pagã da Gália no início do século IV, Hilário chegou ao cristianismo através de um percurso pessoal de busca filosófica pela verdade, batizando-se já adulto junto com a esposa e a filha. Tornou-se bispo de Poitiers e logo se destacou como um dos mais firmes defensores da fé de Niceia diante do arianismo, que negava a plena divindade de Cristo e havia conquistado grande influência, inclusive entre bispos e no próprio imperador. Por essa firmeza doutrinal, foi exilado por vários anos na Frígia, onde, longe de se calar, aproveitou o tempo para estudar teologia oriental e escrever obras que ajudariam a reconciliar posições entre Oriente e Ocidente cristãos. Ficou conhecido como o 'Atanásio do Ocidente', em comparação com o grande defensor oriental da mesma verdade. Escreveu tratados importantes sobre a Trindade que se tornariam referência para gerações posteriores de teólogos. Voltou do exílio sem amargura, e continuou trabalhando pela unidade da Igreja até o fim da vida. Foi declarado Doutor da Igreja pela profundidade e coragem de seu ensinamento teológico. Sua vida mostra que defender a verdade da fé pode custar caro, mas nunca deixa de valer a pena."],
+"01-14":["São Pedro Donders","missionário","Nascido na Holanda em 1809, numa família humilde, Pedro sentiu desde cedo um chamado ao sacerdócio, mas a pobreza da família quase o impediu de estudar — só conseguiu ingressar no seminário graças à ajuda de benfeitores que perceberam sua vocação sincera. Ordenado padre, pediu para ser enviado à colônia holandesa do Suriname, na América do Sul, onde passou a maior parte da vida cuidando de escravizados, indígenas e, mais tarde, especialmente de leprosos isolados numa colônia à margem do rio. Viveu entre os doentes de hanseníase por décadas, oferecendo não apenas cuidado espiritual, mas também assistência material e médica básica, numa época em que a doença gerava enorme medo e isolamento social. Aprendeu as línguas locais para poder evangelizar e confessar sem intermediários, aproximando-se verdadeiramente das pessoas que servia. Recusou por diversas vezes a chance de deixar a colônia de leprosos para assumir posições mais confortáveis na Igreja. Morreu no Suriname em 1887, depois de mais de quarenta anos dedicados aos mais rejeitados da sociedade de seu tempo. É lembrado como o 'apóstolo dos leprosos' do Suriname. Sua vida é um lembrete de que a proximidade física com quem sofre é, muitas vezes, a forma mais concreta de amor cristão."],
+"01-15":["Santo Amaro","abade","A tradição identifica Amaro, também chamado Mauro, como um dos primeiros discípulos de São Bento de Núrsia, entregue ainda criança ao mosteiro para ser educado pelo grande fundador do monaquismo ocidental. É lembrado por um episódio narrado por São Gregório Magno: a pedido de Bento, teria caminhado sobre as águas para salvar outro jovem monge, Plácido, que se afogava — um sinal, segundo a tradição, de sua obediência total ao mestre, mais do que de mérito próprio. Tornou-se, com o tempo, um dos primeiros a levar a Regra beneditina para fora da Itália, fundando mosteiros que ajudaram a espalhar esse modelo de vida monástica pela Europa. É particularmente venerado em Portugal e no Brasil, onde sua devoção popular é grande, associada tradicionalmente à proteção contra dores e enfermidades físicas. Sua vida, vivida desde a infância dentro do mosteiro, mostra um caminho de santidade construído passo a passo, na obediência simples do dia a dia. Não há grandes feitos isolados em sua história além da fidelidade contínua à vida monástica que abraçou ainda menino. É lembrado, sobretudo, como fruto direto da pedagogia espiritual de São Bento. Sua festa convida a valorizar a formação paciente e constante na fé, mesmo quando começa muito cedo."],
+"01-16":["São Marcelo I","papa e mártir","Marcelo tornou-se Bispo de Roma no ano 308, num momento extremamente delicado para a Igreja, logo após o fim de uma dura perseguição promovida pelo imperador Diocleciano. A comunidade cristã de Roma estava dividida: muitos fiéis haviam renegado publicamente a fé por medo da morte, e agora buscavam ser readmitidos à comunhão da Igreja. Marcelo insistiu que essa reconciliação exigisse um caminho sério de penitência, o que gerou forte resistência de parte da comunidade, incluindo tumultos violentos nas ruas de Roma. O imperador Maxêncio, irritado com a agitação, teria condenado o papa a trabalhos forçados, tratando-o com extrema dureza até sua morte, ocorrida ainda no ano seguinte à sua eleição. Seu pontificado breve, mas de apenas um ano, ficou marcado por essa firmeza em não banalizar o pecado nem a fidelidade exigida pela fé cristã. É venerado como mártir por ter morrido em consequência direta dessa perseguição às vésperas da liberdade concedida à Igreja por Constantino. Sua história lembra que a misericórdia verdadeira não dispensa a seriedade da conversão. Marcelo mostra que até decisões pastorais difíceis podem custar a própria vida quando vividas com integridade."],
+"01-17":["Santo Antão","abade","Pai do monaquismo, Antão nasceu no Egito por volta de 251 e, ainda jovem, distribuiu toda a herança que recebera dos pais depois de ouvir na igreja a passagem do Evangelho em que Jesus pede ao jovem rico que venda tudo o que tem. Retirou-se progressivamente ao deserto, vivendo primeiro perto de sua aldeia e depois cada vez mais isolado, entregando-se a décadas de oração, jejum e combate espiritual contra as tentações, que a tradição descreve de forma vívida e às vezes dramática. Aos poucos, discípulos foram se reunindo perto dele, buscando aprender esse caminho radical de busca por Deus, e assim nasceu, quase sem que ele planejasse, o monaquismo cristão como movimento organizado. Saiu do deserto ao menos duas vezes: uma para encorajar cristãos perseguidos em Alexandria, e outra, já muito idoso, para apoiar publicamente Santo Atanásio contra a heresia ariana. Viveu mais de cem anos, quase todos eles no deserto, tornando-se guia espiritual à distância para inúmeros discípulos através de cartas e visitas. Sua vida foi narrada por Santo Atanásio numa biografia que se tornou um dos textos espirituais mais influentes da história cristã, inspirando conversões famosas, inclusive a de Santo Agostinho. É considerado o pai de todos os monges, tanto do Oriente quanto do Ocidente. Sua busca radical por Deus no silêncio do deserto continua inspirando quem procura hoje uma vida interior mais profunda."],
+"01-18":["Santa Margarida da Hungria","religiosa","Filha do rei Béla IV da Hungria, Margarida nasceu em 1242, no meio da invasão mongol que devastava o reino — seus pais chegaram a prometer consagrá-la a Deus se o país fosse salvo da destruição. Cumprindo essa promessa, foi entregue ainda menina a um convento dominicano, onde cresceu e, ao atingir a idade adulta, recusou firmemente propostas de casamento com reis estrangeiros que trariam vantagens políticas ao seu país. Escolheu permanecer no mosteiro construído numa ilha do rio Danúbio, hoje conhecida como Ilha Margarida, em Budapeste, vivendo com austeridade extrema apesar de sua origem real. Dedicava-se a trabalhos humildes dentro do convento, como lavar roupas e cuidar das irmãs doentes, recusando qualquer tratamento especial por ser princesa. Sua vida de oração era intensa, marcada por longas horas diante do Santíssimo Sacramento e por profunda devoção à Paixão de Cristo. Morreu ainda jovem, aos 28 anos, deixando fama de santidade que se espalhou rapidamente pelo reino. Seu exemplo mostra como a renúncia a privilégios e poder pode ser, em si mesma, um caminho radical de entrega a Deus. Margarida é lembrada como símbolo de humildade vivida em meio a um mundo de honrarias que ela escolheu deixar de lado."],
+"01-19":["São André de Peschiera","mártir","André nasceu em Peschiera, no norte da Itália, e entrou para a Ordem dos Dominicanos ainda jovem, dedicando-se com fervor ao estudo e à pregação em meio a uma região da Itália profundamente marcada por movimentos heréticos. Tornou-se conhecido por sua pregação clara e corajosa contra doutrinas que se afastavam da fé católica, num tempo de fortes tensões religiosas no norte italiano. Essa mesma coragem em defender a fé o tornou alvo de hostilidade, e acabou sendo assassinado por opositores enquanto exercia seu ministério de pregador. Sua morte violenta, motivada diretamente pela fidelidade ao que pregava, foi reconhecida pela Igreja como martírio. Como muitos mártires dominicanos dessa época de disputas doutrinárias intensas, André uniu o estudo sério da teologia à disposição de pagar um preço alto por proclamá-la com clareza. É lembrado principalmente nas regiões do norte da Itália onde viveu e morreu, como testemunho local de fidelidade à verdade da fé. Sua vida breve, mas intensamente dedicada à pregação, mostra que anunciar o Evangelho com clareza sempre envolveu, em alguma medida, risco e coragem. André de Peschiera representa os muitos pregadores que pagaram com a vida a fidelidade à mensagem que anunciavam."],
+"01-20":["São Sebastião","mártir","Soldado romano e mártir, Sebastião serviu no exército imperial em Roma no final do século III, período de dura perseguição aos cristãos sob o imperador Diocleciano. Usava sua posição privilegiada dentro do exército para visitar secretamente cristãos presos, encorajando-os a permanecer firmes na fé mesmo diante da ameaça de morte. Quando sua própria fé cristã foi descoberta, o imperador, que o estimava, ordenou que fosse amarrado a um poste e alvejado por flechas — cena que se tornaria uma das mais representadas na arte cristã ao longo dos séculos. Segundo a tradição, sobreviveu a esse primeiro suplício, sendo cuidado e curado por uma viúva cristã chamada Irene. Em vez de fugir, voltou deliberadamente diante do imperador para denunciar publicamente a perseguição aos cristãos, o que resultou em sua execução definitiva, dessa vez a golpes. Essa coragem de enfrentar a morte duas vezes por fidelidade à fé fez dele um dos mártires mais venerados da Igreja antiga. É lembrado por sua coragem serena diante do sofrimento, sustentado por uma fé que não vacilou nem diante da dor física extrema. Tornou-se, com o tempo, padroeiro dos soldados, atletas e de quem enfrenta situações de grande perigo físico."],
+"01-21":["Santa Inês","virgem e mártir","Ainda adolescente, com apenas doze ou treze anos segundo a tradição, Inês viveu em Roma no final do século III e recusou firmemente pedidos de casamento de jovens da nobreza romana, afirmando ter consagrado sua vida inteiramente a Cristo. Diante dessa recusa, foi denunciada como cristã numa época de perseguição, e as autoridades tentaram diversas formas de forçá-la a renunciar à fé, inclusive ameaças de humilhação pública, das quais a tradição narra que ela foi protegida de maneira extraordinária. Preferiu, ainda tão jovem, a morte a trair sua consagração e sua fé, tornando-se rapidamente uma das mártires mais veneradas da Igreja primitiva, mencionada já nos primeiros séculos por autores como Santo Ambrósio e Santo Agostinho. Seu nome em latim, Agnes, aproxima-se da palavra 'cordeiro' (agnus), o que gerou a tradicional bênção dos cordeiros em sua festa, cuja lã é usada para tecer o pálio dos arcebispos. É lembrada como símbolo de pureza e fidelidade a Cristo levada às últimas consequências, apesar da pouca idade. Sua coragem precoce impressionou tanto os cristãos quanto os próprios romanos pagãos da época. Tornou-se, com os séculos, padroeira das crianças, das jovens e da castidade consagrada. Sua festa convida à reflexão sobre a firmeza que a fé pode gerar mesmo em corações muito jovens."],
+"01-22":["São Vicente de Saragoça","diácono e mártir","Vicente serviu como diácono na cidade de Saragoça, na Espanha romana, sob a autoridade do bispo Valério, a quem auxiliava também na pregação por ter mais facilidade de palavra. Durante a perseguição de Diocleciano, foi preso junto com o próprio bispo e levado à cidade de Valência, onde as autoridades romanas concentraram sobre ele torturas particularmente cruéis, tentando forçá-lo a entregar os textos sagrados e renunciar à fé. Vicente respondeu com serenidade e até certa ironia diante dos algozes, recusando-se a ceder mesmo diante do sofrimento extremo relatado pelos primeiros cronistas cristãos, entre eles o poeta Prudêncio. Morreu em consequência direta dos tormentos sofridos, tornando-se rapidamente um dos mártires mais venerados de toda a Igreja ocidental, com devoção espalhada desde a Espanha até a Gália e o norte da África. Santo Agostinho chegou a pregar diversos sermões em sua honra, sinal de como sua fama de santidade se espalhou rapidamente. É considerado um dos primeiros mártires espanhóis de grande destaque universal. Sua serenidade diante da tortura tornou-se, na tradição cristã, símbolo de como a graça pode sustentar a coragem humana além do que pareceria possível. Vicente de Saragoça lembra que a fidelidade pode se manter firme até mesmo diante do sofrimento físico mais extremo."],
+"01-23":["São Henrique de Suso","religioso","Henrique Suso nasceu na região da atual Suíça, por volta de 1295, e entrou ainda jovem para a Ordem dos Dominicanos, tornando-se discípulo do grande místico Mestre Eckhart em Colônia. Viveu um período de intensa penitência corporal na juventude, buscando purificação através de austeridades severas, até compreender, mais maduro, que o caminho místico verdadeiro passava mais pela entrega interior do que pelo sofrimento físico em si. Tornou-se um dos maiores expoentes da mística renana medieval, escrevendo obras de profunda beleza espiritual sobre a união da alma com a Sabedoria Eterna, personificada por ele de forma quase poética. Sofreu perseguições e calúnias ao longo da vida, inclusive acusações injustas que o levaram a mudanças forçadas de convento, suportadas com notável paciência interior. Sua obra mais conhecida, o 'Livrinho da Eterna Sabedoria', tornou-se um dos textos de devoção mais lidos da Baixa Idade Média, influenciando gerações de místicos posteriores. Combinava profundidade teológica com uma linguagem afetiva e acessível, aproximando temas complexos da experiência espiritual comum dos fiéis. É lembrado como ponte entre a especulação mística mais abstrata de seu mestre Eckhart e uma espiritualidade mais popular e sentimental. Sua vida mostra como a busca por Deus pode amadurecer, passando de um rigor externo para uma entrega interior mais serena e confiante."],
+"01-24":["São Francisco de Sales","bispo e doutor da Igreja","Nascido na região da Saboia em 1567, Francisco de Sales estudou Direito em Pádua antes de, contra a vontade do pai, seguir o chamado ao sacerdócio. Tornou-se bispo de Genebra numa região fortemente marcada pela Reforma Protestante, e em vez de confrontar seus opositores com dureza, optou por uma abordagem de diálogo paciente, escrevendo panfletos simples que deslizava por baixo das portas para reconquistar, um a um, os fiéis afastados da Igreja Católica. Ficou famoso por sua doçura e paciência mesmo diante da hostilidade, cunhando a célebre frase de que 'se pega mais moscas com mel do que com vinagre'. Escreveu a 'Introdução à Vida Devota', obra revolucionária para sua época por ensinar que a santidade profunda não era exclusiva de religiosos e clérigos, mas plenamente acessível a leigos, casados, comerciantes e donas de casa, em meio às ocupações comuns da vida. Fundou, junto com Santa Joana de Chantal, a Ordem da Visitação, voltada também para mulheres que não se enquadravam nos rigores físicos de outras ordens contemplativas da época. Sua correspondência espiritual extensa, marcada por afeto e bom senso, tornou-se referência para a direção espiritual cristã. É considerado, por isso, o patrono dos escritores e jornalistas, por sua habilidade de comunicar verdades profundas de forma simples e cativante. Sua vida ensina que a firmeza da verdade e a doçura no trato não são opostas, mas podem and devem caminhar juntas."],
+"01-25":["Conversão de São Paulo","apóstolo","Saulo de Tarso era um fariseu fervoroso e perseguidor implacável dos primeiros cristãos, presente inclusive na morte de Santo Estêvão, o primeiro mártir. No caminho para Damasco, decidido a prender ainda mais seguidores de Cristo, foi surpreendido por uma luz intensa e por uma voz que lhe perguntava: 'Saulo, Saulo, por que me persegues?' — encontro que o deixou cego por três dias e transformou radicalmente o rumo de sua vida. Acolhido e batizado por Ananias, um cristão que a princípio temia recebê-lo, Saulo tornou-se Paulo, e o mesmo fervor que antes usava para perseguir a Igreja passou a usar para anunciá-la por todo o Império Romano. Empreendeu diversas viagens missionárias, fundando comunidades cristãs em cidades importantes da Ásia Menor e da Grécia, e escreveu cartas que se tornariam parte fundamental do Novo Testamento. Sofreu naufrágios, prisões, açoites e perseguições constantes por causa da mesma mensagem que antes tentara silenciar. Tornou-se o grande apóstolo dos gentios, defendendo com firmeza teológica que a salvação em Cristo era oferecida a todos, judeus e não-judeus, sem distinção. Sua conversão é celebrada não apenas como mudança de vida, mas como um dos momentos mais decisivos da história da evangelização cristã. A festa lembra que nenhum passado, por mais hostil à fé que tenha sido, está fora do alcance da graça transformadora de Deus."],
+"01-26":["São Timóteo e São Tito","bispos, discípulos de São Paulo","Timóteo, filho de mãe judia e pai grego, foi formado na fé desde criança por sua mãe Eunice e sua avó Loide, e tornou-se um dos companheiros mais constantes e queridos de Paulo em suas viagens missionárias. Ainda jovem, foi deixado por Paulo à frente da comunidade de Éfeso, recebendo dele duas cartas pastorais cheias de conselhos práticos sobre como liderar, corrigir e cuidar de uma Igreja em formação. Tito, por sua vez, grego não circuncidado, tornou-se sinal vivo de que a salvação em Cristo não exigia primeiro tornar-se judeu, e foi enviado por Paulo em missões delicadas de reconciliação, incluindo a organização da Igreja em Creta. Ambos representam o tipo de discípulo que Paulo mais valorizava: fiéis, capazes de assumir responsabilidade real, e dispostos a enfrentar comunidades difíceis com paciência e firmeza. As cartas de Paulo a eles revelam também um lado mais pessoal e afetuoso do apóstolo, cheio de conselhos quase paternos sobre saúde, conduta e perseverança. Juntos, tornaram-se os primeiros bispos de suas respectivas regiões, dando continuidade ao trabalho iniciado por Paulo depois que ele seguia adiante. São celebrados juntos justamente por representarem essa geração de líderes formados diretamente pelo grande apóstolo dos gentios. Sua memória lembra a importância de formar bons sucessores para que a missão continue além de uma só geração."],
+"01-27":["Santa Ângela Merici","virgem, fundadora","Nascida no norte da Itália em 1474, Ângela perdeu os pais ainda jovem e viveu, por algum tempo, sob os cuidados de um tio, num período marcado por perdas e provações pessoais profundas. Consagrou-se a Deus como leiga, ingressando na Ordem Terceira Franciscana, sem entrar formalmente num convento, o que já era, para a época, uma escolha pouco comum. Peregrinou à Terra Santa e a Roma, e ao longo da vida foi amadurecendo um projeto pioneiro: educar meninas pobres, oferecendo-lhes formação cristã e alfabetização, num tempo em que a educação feminina era amplamente negligenciada. Fundou assim, em 1535, a Companhia de Santa Úrsula, reunindo mulheres consagradas que viviam no mundo, sem hábito religioso formal nem clausura, dedicadas inteiramente ao ensino de meninas — um modelo revolucionário de vida consagrada apostólica que antecipava desenvolvimentos futuros da vida religiosa feminina. Insistia que cada educadora conhecesse profundamente as jovens sob seus cuidados, respeitando a individualidade de cada uma, ideia bastante avançada para o século XVI. Sua obra deu origem, com o tempo, às Ursulinas, que se espalhariam pelo mundo inteiro dedicadas à educação. Morreu em 1540, deixando um legado educativo que ainda hoje molda escolas em diversos países. Ângela Merici é lembrada como pioneira de um modelo de vida consagrada voltado à missão educativa vivida em meio ao mundo."],
+"01-28":["Santo Tomás de Aquino","presbítero e doutor da Igreja","Nascido numa família nobre napolitana por volta de 1225, Tomás surpreendeu e irritou profundamente sua família ao escolher entrar para a recém-fundada e humilde Ordem dos Dominicanos, em vez de seguir o caminho beneditino mais prestigioso que esperavam para ele. Seus irmãos chegaram a sequestrá-lo e mantê-lo prisioneiro em casa por quase um ano, tentando dissuadi-lo, mas Tomás permaneceu firme em sua vocação. Estudou em Paris e Colônia sob Santo Alberto Magno, que logo reconheceu nele uma inteligência extraordinária, apesar de colegas o apelidarem de 'boi mudo' por sua quietude física — ao que Alberto Magno teria respondido que aquele boi ainda faria mugir o mundo inteiro. Dedicou a vida a unir com profundidade sem precedentes a filosofia de Aristóteles à fé cristã, produzindo a Suma Teológica, uma das obras mais monumentais e influentes da história do pensamento ocidental. Além de teólogo, era também homem de intensa vida de oração, dizendo compreender mais diante do crucifixo em oração do que em qualquer livro. Perto do fim da vida, teve uma experiência mística tão intensa que declarou que tudo o que havia escrito lhe parecia 'palha' diante do que havia contemplado, deixando a Suma Teológica inacabada. Morreu em 1274, a caminho de um concílio, e foi declarado Doutor Angélico pela clareza e profundidade de seu pensamento. Sua obra continua sendo referência central para a filosofia e a teologia católicas até os dias de hoje."],
+"01-29":["São Josef Freinademetz","missionário na China","Nascido nos Alpes italianos do Tirol do Sul em 1852, Josef sentiu desde jovem um forte chamado missionário, ingressando na recém-fundada Congregação do Verbo Divino justamente para se preparar para a missão além-mar. Foi enviado à China em 1879, onde passaria os trinta anos seguintes de vida, aprendendo profundamente a língua, os costumes e a cultura chinesa a ponto de ser reconhecido pelos próprios chineses como alguém que verdadeiramente se tornara um deles. Costumava dizer que amava a China e o povo chinês tanto que gostaria de nascer chinês, de modo a poder anunciar o Evangelho como um irmão, e não como um estrangeiro distante. Trabalhou incansavelmente formando catequistas e sacerdotes locais, convicto de que a Igreja só se enraizaria de fato se fosse conduzida também por líderes nativos. Enfrentou perseguições violentas contra cristãos, incluindo o levante dos Boxers, período de grande risco e sofrimento para as comunidades cristãs na China. Viveu com extrema simplicidade, recusando privilégios que muitas vezes eram oferecidos a missionários europeus da época. Morreu em 1908, vítima de tifo, contraído justamente ao cuidar dos doentes de sua missão. Sua vida é lembrada como modelo de inculturação missionária genuína, décadas antes de esse termo se tornar comum na linguagem eclesial."],
+"01-30":["Beata Estefânia Quinzani","leiga","Nascida numa família camponesa muito pobre da Lombardia, na Itália, em 1457, Estefânia teve desde a infância experiências místicas intensas, incluindo êxtases que impressionavam profundamente quem os testemunhava. Tornou-se terceira ordem dominicana, permanecendo leiga consagrada, sem nunca professar votos religiosos formais numa comunidade fechada, e viveu no meio do povo simples de sua região. Ficou conhecida sobretudo por reviver publicamente, todas as sextas-feiras, os sofrimentos da Paixão de Cristo, entrando em estados de êxtase que atraíam multidões de fiéis e também curiosos à sua cidade. Apesar da fama gerada por esses fenômenos místicos extraordinários, insistia sempre em permanecer humilde, dedicando grande parte do tempo a obras concretas de caridade com os pobres e enfermos de sua região. Fundou também um pequeno mosteiro dominicano, ajudando a formar outras mulheres na vida espiritual mais estruturada. Sua vida mostra como fenômenos místicos extraordinários, quando autênticos, vêm sempre acompanhados de humildade e serviço concreto, nunca de vaidade. Foi muito procurada como conselheira espiritual por pessoas de todas as classes sociais, de camponeses a nobres. Sua memória permanece viva, sobretudo, na devoção popular da região onde viveu, como testemunho de uma fé vivida com intensidade incomum."],
+"01-31":["São João Bosco","presbítero","Nascido em 1815 numa família pobre do Piemonte italiano, João Bosco perdeu o pai ainda muito pequeno e cresceu sob os cuidados de sua mãe, Margarida, que o incentivou desde cedo a seguir o caminho sacerdotal, apesar das enormes dificuldades financeiras da família. Ordenado padre, ficou profundamente impactado ao ver jovens saídos da prisão de Turim, sem família, sem trabalho e sem qualquer apoio, à mercê das ruas — e decidiu dedicar a vida inteira a esses jovens abandonados. Criou o que chamou de Oratório, um espaço onde meninos pobres podiam brincar, estudar um ofício e crescer na fé, desenvolvendo um método educativo revolucionário para a época, baseado na razão, na religião e, sobretudo, na bondade amorosa, em contraste com os castigos físicos comuns na educação da época. Fundou a Congregação Salesiana, e junto com Santa Maria Domingas Mazzarello, também o ramo feminino, as Filhas de Maria Auxiliadora, ambos dedicados especialmente à juventude pobre. Enfrentou enormes dificuldades financeiras ao longo da vida, sustentando suas obras através de uma confiança quase teimosa na Providência divina e de sua extraordinária capacidade de angariar apoiadores. Escreveu também livros e publicações simples voltadas à formação moral e religiosa dos jovens, além de textos de história popular. Sua pedagogia, hoje conhecida como Sistema Preventivo, continua influenciando escolas salesianas em praticamente todos os países do mundo. É lembrado como o grande patrono dos jovens, especialmente dos mais pobres e vulneráveis, mostrando que educar com amor pode transformar destinos inteiros."],
+"02-01":["Santa Brígida da Irlanda","abadessa",null],
+"02-02":["Apresentação do Senhor","festa","Maria e José levam o Menino Jesus ao Templo, cumprindo a Lei — celebrada também como festa da luz e das candeias."],
+"02-03":["São Brás de Sebaste","bispo e mártir","Médico e depois bispo, é invocado tradicionalmente contra as doenças da garganta, com a bênção que leva seu nome."],
+"02-04":["Santo André Corsini","bispo",null],
+"02-05":["Santa Águeda","virgem e mártir","Recusou-se a renunciar à fé mesmo sob tortura, tornando-se padroeira das mulheres que sofrem doenças no peito."],
+"02-06":["São Paulo Miki e companheiros","mártires do Japão","Crucificados em Nagasaki por professarem a fé cristã, são os primeiros mártires reconhecidos da Ásia."],
+"02-07":["Beata Lindalva Justo de Oliveira","religiosa e mártir",null],
+"02-08":["São Jerônimo Emiliano","fundador, patrono dos órfãos",null],
+"02-09":["Santa Apolônia","virgem e mártir",null],
+"02-10":["Santa Escolástica","virgem","Irmã gêmea de São Bento, fundou um ramo feminino do monaquismo beneditino e é lembrada por seu amor profundo à oração."],
+"02-11":["Nossa Senhora de Lourdes","aparição mariana","Em 1858, Maria apareceu a Santa Bernadette em Lourdes, tornando o local um dos maiores santuários de cura e peregrinação do mundo."],
+"02-12":["Santa Eulália","virgem e mártir",null],
+"02-13":["São Marciniano","bispo",null],
+"02-14":["Santos Cirilo e Metódio","evangelizadores dos eslavos",null],
+"02-15":["21 Mártires Coptas da Líbia","mártires contemporâneos",null],
+"02-16":["Santo Onésimo","discípulo de São Paulo",null],
+"02-17":["Sete Santos Fundadores dos Servitas","religiosos",null],
+"02-18":["São Teotónio","religioso",null],
+"02-19":["Santa Belina","virgem e mártir",null],
+"02-20":["Francisco e Jacinta Marto","pastorinhos de Fátima","Os irmãos mais novos a quem Nossa Senhora apareceu em Fátima viveram com intensa entrega à oração e ao sacrifício pelos pecadores."],
+"02-21":["São Pedro Damião","bispo e doutor da Igreja",null],
+"02-22":["Cátedra de São Pedro","festa apostólica",null],
+"02-23":["São Policarpo","bispo e mártir","Discípulo do apóstolo João, foi martirizado por recusar renegar a Cristo, dizendo: 'Oitenta e seis anos O sirvo, e Ele nunca me fez mal.'"],
+"02-24":["São Sérgio","mártir",null],
+"02-25":["São Luigi Versiglia e São Callisto Caravario","mártires",null],
+"02-26":["Santo Alexandre de Alexandria","bispo",null],
+"02-27":["São Gabriel da Virgem das Dores","religioso",null],
+"02-28":["Santa Múnia","virgem e mártir",null],
+"03-01":["São David","padroeiro do País de Gales",null],
+"03-02":["Santa Inês da Boêmia","religiosa",null],
+"03-03":["Santos Marino e Astério","mártires",null],
+"03-04":["São Casimiro","príncipe",null],
+"03-05":["São João José da Cruz","religioso",null],
+"03-06":["Santa Rosa de Viterbo","virgem",null],
+"03-07":["Santa Perpétua e Santa Felicidade","mártires","Jovens mães na Cartago do ano 203, foram martirizadas juntas, deixando um dos relatos de martírio mais antigos e comoventes da Igreja."],
+"03-08":["São João de Deus","religioso","Após uma conversão radical de vida, dedicou-se a cuidar dos doentes e pobres, sendo hoje patrono dos hospitais e enfermeiros."],
+"03-09":["Santa Francisca Romana","religiosa",null],
+"03-10":["Mártires de Sebaste","mártires",null],
+"03-11":["São Militão e companheiros","mártires",null],
+"03-12":["São Gregório Magno","papa e doutor da Igreja",null],
+"03-13":["São Rodrigo de Córdova","mártir",null],
+"03-14":["Santo Antônio de Categeró","religioso",null],
+"03-15":["Santa Matilde","rainha",null],
+"03-16":["São Henrique","bispo",null],
+"03-17":["São Patrício","bispo","Evangelizou a Irlanda no século V, usando o trevo para ensinar a Santíssima Trindade. É o padroeiro amado do povo irlandês."],
+"03-18":["São Cirilo de Jerusalém","bispo e doutor da Igreja",null],
+"03-19":["São José","esposo da Virgem Maria","Homem justo e silencioso, acolheu Maria e o Menino Jesus com fé e obediência total à vontade de Deus. É padroeiro da Igreja universal."],
+"03-20":["Santa Maria Josefina do Sagrado Coração","fundadora",null],
+"03-21":["São Bento","abade","Pai do monaquismo ocidental, escreveu a célebre Regra baseada no lema 'ora et labora'. É o padroeiro da Europa."],
+"03-22":["São Berilo","bispo",null],
+"03-23":["São Toríbio de Mongrovejo","bispo",null],
+"03-24":["São Óscar Romero","bispo e mártir","Arcebispo de San Salvador, foi assassinado ao celebrar a missa por defender os pobres e denunciar a injustiça, tornando-se símbolo de coragem pastoral."],
+"03-25":["Anunciação do Senhor","solenidade","O anjo Gabriel anuncia a Maria que ela conceberá o Filho de Deus. Seu 'sim' livre torna-se o início da nossa salvação."],
+"03-26":["Santa Lúcia Filippini","religiosa e fundadora",null],
+"03-27":["São Ruperto de Salzburgo","bispo",null],
+"03-28":["Santo Alexandre","mártir",null],
+"03-29":["São Bertoldo","religioso",null],
+"03-30":["São Quirino de Neuss","mártir",null],
+"03-31":["Santa Balbina","virgem e mártir",null],
+"04-01":["São Hugo","bispo",null],
+"04-02":["São Francisco de Paula","eremita",null],
+"04-03":["São Ricardo","bispo",null],
+"04-04":["Santo Isidoro de Sevilha","bispo e doutor da Igreja","Um dos últimos grandes eruditos do mundo antigo, compilou o saber de sua época — hoje é o padroeiro proposto para os usuários da internet."],
+"04-05":["São Vicente Ferrer","presbítero",null],
+"04-06":["São Marcelino","mártir",null],
+"04-07":["São João Batista de La Salle","presbítero, patrono dos professores",null],
+"04-08":["São Dionísio de Corinto","bispo",null],
+"04-09":["Santa Maria de Cléofas","discípula",null],
+"04-10":["Santa Madalena de Canossa","religiosa e fundadora",null],
+"04-11":["Santa Elena Guerra","religiosa e fundadora",null],
+"04-12":["Santa Margarida de Castello","religiosa",null],
+"04-13":["São Martinho I","papa e mártir",null],
+"04-14":["Santa Liduína","virgem",null],
+"04-15":["São César de Bus","presbítero",null],
+"04-16":["Santa Bernadette Soubirous","religiosa","Jovem pastora de Lourdes a quem Nossa Senhora apareceu dezoito vezes; viveu depois na simplicidade e humildade de um convento."],
+"04-17":["Santo Aniceto","papa e mártir",null],
+"04-18":["Santo Apolônio","mártir",null],
+"04-19":["Santo Expedito","mártir",null],
+"04-20":["Santa Inês de Montepulciano","virgem",null],
+"04-21":["Santo Anselmo","bispo e doutor da Igreja",null],
+"04-22":["São Caio","papa",null],
+"04-23":["São Jorge","mártir","Soldado romano martirizado por sua fé, tornou-se um dos santos mais venerados do mundo, símbolo da vitória do bem sobre o mal."],
+"04-24":["São Fiel de Sigmaringa","presbítero e mártir",null],
+"04-25":["São Marcos Evangelista","evangelista","Discípulo de São Pedro, escreveu o Evangelho mais breve e direto, apresentando Jesus em ação, a caminho da cruz."],
+"04-26":["Santa Montserrat","padroeira da Catalunha",null],
+"04-27":["Santa Zita","padroeira dos trabalhadores domésticos",null],
+"04-28":["São Pedro Chanel","presbítero e mártir",null],
+"04-29":["Santa Catarina de Siena","virgem e doutora da Igreja","Leiga dominicana de enorme coragem, aconselhou papas e trabalhou pela paz na Igreja, tudo isso sem nunca ter frequentado uma escola formal."],
+"04-30":["São Pio V","papa",null],
+"05-01":["São José Operário","padroeiro dos trabalhadores","A Igreja celebra José em seu trabalho manual, santificando o esforço cotidiano e dignificando o valor do trabalho humano."],
+"05-02":["Santo Atanásio","bispo e doutor da Igreja",null],
+"05-03":["São Filipe e São Tiago Menor","apóstolos",null],
+"05-04":["São Peregrino Laziosi","religioso",null],
+"05-05":["Santo Ângelo da Sicília","mártir",null],
+"05-06":["São Domingos Sávio","adolescente santo","Aluno de Dom Bosco, viveu com pureza e fervor extraordinários apesar de sua morte precoce aos 14 anos."],
+"05-07":["Santa Flávia","virgem e mártir",null],
+"05-08":["Nossa Senhora da Estrela","título mariano",null],
+"05-09":["São Pacômio","abade",null],
+"05-10":["São Damião de Molokai","presbítero, missionário","Dedicou a vida a cuidar de leprosos isolados na ilha de Molokai, chegando ele mesmo a contrair a doença por amor aos que servia."],
+"05-11":["Santo Inácio de Lácomi","bispo",null],
+"05-12":["São Pancrácio","mártir",null],
+"05-13":["Nossa Senhora de Fátima","aparição mariana","Em 1917, Maria apareceu a três pastorinhos em Fátima, pedindo oração, penitência e conversão pela paz do mundo."],
+"05-14":["São Matias","apóstolo",null],
+"05-15":["Santa Dymphna","padroeira dos que sofrem doenças mentais",null],
+"05-16":["São João Nepomuceno","mártir do sigilo sacramental",null],
+"05-17":["Santa Júnia","discípula dos setenta e dois",null],
+"05-18":["São João I","papa e mártir",null],
+"05-19":["Santo Ivo","padroeiro dos advogados",null],
+"05-20":["São Bernardino de Siena","presbítero",null],
+"05-21":["São Cristóvão de Magalhães e companheiros","mártires do Brasil",null],
+"05-22":["Santa Rita de Cássia","religiosa, patrona das causas impossíveis","Depois de um casamento sofrido e da perda dos filhos, entrou num convento e viveu profunda união com a Paixão de Cristo. É invocada nas causas mais difíceis."],
+"05-23":["São João Batista de Rossi","presbítero",null],
+"05-24":["Nossa Senhora Auxiliadora","título mariano",null],
+"05-25":["São Beda, o Venerável","doutor da Igreja",null],
+"05-26":["São Filipe Néri","presbítero",null],
+"05-27":["Santo Agostinho de Cantuária","bispo",null],
+"05-28":["Beato Luís Biraghi","fundador",null],
+"05-29":["São Paulo VI","papa","Guiou a Igreja durante e após o Concílio Vaticano II, com paixão pelo diálogo entre a fé e o mundo moderno."],
+"05-30":["Santa Joana d'Arc","virgem e mártir","Camponesa francesa que, guiada por vozes que dizia serem de santos, liderou exércitos por seu país e foi depois queimada como herege — reabilitada mais tarde pela própria Igreja."],
+"05-31":["Visitação de Nossa Senhora","festa","Maria visita sua prima Isabel, e o menino João Batista salta de alegria no ventre — encontro que se tornou hino de louvor, o Magnificat."],
+"06-01":["São Justino","mártir e filósofo",null],
+"06-02":["São Marcelino e São Pedro","mártires",null],
+"06-03":["São Carlos Lwanga e companheiros","mártires de Uganda","Jovens da corte real de Uganda, foram martirizados por recusarem abandonar a fé cristã, tornando-se padroeiros da juventude africana."],
+"06-04":["São Francisco Caracciolo","fundador",null],
+"06-05":["São Bonifácio","bispo e mártir",null],
+"06-06":["São Norberto de Xanten","bispo",null],
+"06-07":["Santo Antônio Maria Gianelli","bispo",null],
+"06-08":["Santo Efrém, o Sírio","diácono e doutor da Igreja",null],
+"06-09":["São José de Anchieta","presbítero, apóstolo do Brasil","Jesuíta que evangelizou o Brasil colonial, ajudando a fundar a cidade de São Paulo e defendendo os povos indígenas."],
+"06-10":["Santo Anjo da Guarda de Portugal","festa",null],
+"06-11":["São Barnabé","apóstolo",null],
+"06-12":["Santo Onofre","eremita",null],
+"06-13":["Santo Antônio de Lisboa (Pádua)","presbítero e doutor da Igreja","Grande pregador franciscano, é um dos santos mais populares do mundo, invocado para encontrar o que se perdeu e por sua devoção aos pobres."],
+"06-14":["São Bartolomeu (Natanael)","apóstolo",null],
+"06-15":["Santa Germana Cousin","virgem",null],
+"06-16":["São Manuel","mártir",null],
+"06-17":["São Ranieri de Pisa","eremita",null],
+"06-18":["Beata Hosana de Mântua","virgem",null],
+"06-19":["São Romualdo","abade",null],
+"06-20":["Beatas Sancha e Mafalda de Portugal","princesas religiosas",null],
+"06-21":["São Luís Gonzaga","religioso, padroeiro da juventude","Jovem nobre que renunciou a uma vida de privilégios para servir a Deus, morrendo cedo ao cuidar de doentes durante uma peste."],
+"06-22":["São Tomás Moro","mártir","Chanceler da Inglaterra, foi executado por não renunciar à fé católica, dizendo ser 'o bom servo do rei, mas primeiro de Deus'."],
+"06-23":["Vigília de São João Batista","festa",null],
+"06-24":["Nascimento de São João Batista","precursor do Senhor","Filho de Isabel e Zacarias, seria o precursor de Cristo, preparando o caminho no deserto com sua pregação de conversão."],
+"06-25":["São Máximo de Turim","bispo",null],
+"06-26":["São Josemaría Escrivá","presbítero, fundador",null],
+"06-27":["São Cirilo de Alexandria","bispo e doutor da Igreja",null],
+"06-28":["Santo Irineu de Lyon","bispo e mártir",null],
+"06-29":["São Pedro e São Paulo","apóstolos","Pedro, a rocha sobre a qual Cristo edificou a Igreja, e Paulo, o incansável apóstolo dos gentios — juntos, colunas da fé cristã, martirizados em Roma."],
+"06-30":["Primeiros Mártires de Roma","mártires da perseguição de Nero",null],
+"07-01":["Santo Aarão","profeta",null],
+"07-02":["São Pedro de Luxemburgo","cardeal",null],
+"07-03":["São Tomé","apóstolo","Conhecido por sua dúvida diante da Ressurreição, tornou-se testemunha ardente ao tocar as chagas de Cristo e proclamar: 'Meu Senhor e meu Deus!'"],
+"07-04":["São Pier Giorgio Frassati","leigo","Jovem italiano cheio de alegria e fé, dedicou-se aos pobres nas montanhas e nas ruas de Turim, morrendo aos 24 anos."],
+"07-05":["Santo Antônio Maria Zaccaria","fundador",null],
+"07-06":["Santa Maria Goretti","virgem e mártir","Aos 11 anos, perdoou em seu leito de morte quem a agrediu, tornando-se símbolo de pureza e misericórdia."],
+"07-07":["Beatos Józef e Wiktoria Ulma","mártires, família","Casal polonês martirizado com os filhos por esconderem judeus durante a Segunda Guerra, testemunho supremo de caridade."],
+"07-08":["Santo Eugênio III","papa",null],
+"07-09":["Santa Paulina do Coração Agonizante de Jesus","religiosa, fundadora","Primeira santa canonizada do Brasil, dedicou a vida a cuidar dos mais abandonados, sobretudo doentes pobres."],
+"07-10":["Santo Olavo","rei da Noruega",null],
+"07-11":["São Bento","abade",null],
+"07-12":["Luís Martin e Zélia Guérin","pais de Santa Teresinha",null],
+"07-13":["Santa Teresa dos Andes","religiosa carmelita",null],
+"07-14":["São Camilo de Lellis","fundador, patrono dos enfermeiros",null],
+"07-15":["São Boaventura","bispo e doutor da Igreja",null],
+"07-16":["Nossa Senhora do Carmo","título mariano","Padroeira da Ordem Carmelita, é venerada com o escapulário como sinal de proteção e consagração a Maria."],
+"07-17":["Carmelitas de Compiègne","religiosas mártires",null],
+"07-18":["Santa Marinha","virgem e mártir",null],
+"07-19":["Santo Arsênio","eremita",null],
+"07-20":["Santa Vilgeforte","virgem e mártir",null],
+"07-21":["São Lourenço de Brindisi","doutor da Igreja",null],
+"07-22":["Santa Maria Madalena","discípula do Senhor","Primeira testemunha da Ressurreição, é chamada 'apóstola dos apóstolos' por anunciar aos discípulos que Cristo ressuscitara."],
+"07-23":["Santa Brígida da Suécia","religiosa",null],
+"07-24":["Santa Cristina","mártir",null],
+"07-25":["São Tiago Maior","apóstolo","Um dos primeiros discípulos chamados por Jesus, testemunhou a Transfiguração e foi o primeiro apóstolo a morrer mártir."],
+"07-26":["Sant'Ana e São Joaquim","pais de Nossa Senhora","Avós de Jesus, são lembrados como modelo de família que acolhe e educa na fé, transmitindo a esperança às gerações seguintes."],
+"07-27":["São Titus Brandsma","religioso e mártir",null],
+"07-28":["Santo Inocêncio I","papa",null],
+"07-29":["Santa Marta, Maria e Lázaro","amigos de Jesus","A casa de Betânia acolhia Jesus com hospitalidade e amizade — Marta serviu, Maria escutou aos pés do Mestre, e Lázaro foi por Ele ressuscitado."],
+"07-30":["São Pedro Crisólogo","bispo e doutor da Igreja",null],
+"07-31":["Santo Inácio de Loyola","fundador dos Jesuítas","Ex-soldado ferido em batalha, converteu-se durante a convalescença e fundou a Companhia de Jesus, deixando os Exercícios Espirituais como legado."],
+"08-01":["Santo Afonso de Ligório","bispo e doutor da Igreja",null],
+"08-02":["Santo Eusébio de Vercelas","bispo",null],
+"08-03":["São Nicodemos","discípulo secreto de Jesus",null],
+"08-04":["São João Maria Vianney","presbítero, patrono dos padres","O Cura d'Ars passava horas no confessionário, atraindo peregrinos de toda a França com sua simplicidade e zelo pastoral."],
+"08-05":["Dedicação de Santa Maria Maior","festa",null],
+"08-06":["Transfiguração do Senhor","festa","No monte Tabor, Jesus revela sua glória diante de Pedro, Tiago e João, antecipando a luz da Ressurreição."],
+"08-07":["São Caetano","fundador",null],
+"08-08":["São Domingos de Gusmão","fundador dos Dominicanos","Fundou a Ordem dos Pregadores para responder às heresias de seu tempo com estudo, oração e pregação — e nos deixou o Rosário."],
+"08-09":["Santa Teresa Benedita da Cruz (Edith Stein)","filósofa, mártir","Filósofa judia convertida ao catolicismo e depois carmelita, morreu em Auschwitz — testemunho de fé em meio ao horror do século XX."],
+"08-10":["São Lourenço","diácono e mártir","Diácono romano queimado vivo por recusar entregar os tesouros da Igreja, que dizia serem os pobres que ele servia."],
+"08-11":["Santa Clara de Assis","virgem, fundadora","Seguiu São Francisco na pobreza radical e fundou as Clarissas, vivendo uma vida contemplativa de total confiança na Providência."],
+"08-12":["Beato Amadeu da Silva","religioso",null],
+"08-13":["Santa Dulce dos Pobres","religiosa, fundadora","Freira brasileira que dedicou a vida aos pobres e doentes da Bahia, fundando hospitais e obras sociais movida por amor concreto ao próximo."],
+"08-14":["São Maximiliano Kolbe","presbítero e mártir","Ofereceu a própria vida em troca da de um pai de família num campo de concentração nazista, testemunho supremo de caridade."],
+"08-15":["Assunção da Virgem Maria","solenidade","Maria é elevada de corpo e alma à glória celeste — sinal de esperança para todos os que seguem Cristo."],
+"08-16":["Santo Estêvão da Hungria","rei",null],
+"08-17":["Santa Beatriz da Silva","fundadora",null],
+"08-18":["Santa Helena","imperatriz",null],
+"08-19":["São João Eudes","presbítero",null],
+"08-20":["São Bernardo de Claraval","abade e doutor da Igreja","Reformador monástico e grande pregador, expandiu a Ordem Cisterciense e é conhecido por sua profunda devoção mariana."],
+"08-21":["São Pio X","papa",null],
+"08-22":["Nossa Senhora Rainha","título mariano",null],
+"08-23":["Santa Rosa de Lima","virgem, padroeira da América","Primeira santa nascida nas Américas, viveu vida de intensa penitência e oração em meio à cidade de Lima, no Peru."],
+"08-24":["São Bartolomeu","apóstolo",null],
+"08-25":["São Luís de França","rei",null],
+"08-26":["Beato João Paulo I","papa",null],
+"08-27":["Santa Mônica","mãe de Santo Agostinho","Rezou por décadas pela conversão do filho, chorando e perseverando até vê-lo tornar-se um dos maiores santos da Igreja."],
+"08-28":["Santo Agostinho de Hipona","bispo e doutor da Igreja","De vida agitada na juventude, converteu-se e tornou-se um dos maiores pensadores cristãos, autor das Confissões."],
+"08-29":["Martírio de São João Batista","precursor do Senhor",null],
+"08-30":["São Félix e Santo Adauto","mártires",null],
+"08-31":["São Raimundo Nonato","religioso",null],
+"09-01":["Beata Isabel Cristina","virgem e mártir",null],
+"09-02":["Santo Egídio","eremita",null],
+"09-03":["São Gregório Magno","papa e doutor da Igreja",null],
+"09-04":["Santa Rosália","eremita",null],
+"09-05":["Santa Teresa de Calcutá","religiosa, fundadora","Dedicou a vida aos mais pobres entre os pobres nas ruas de Calcutá, fundando as Missionárias da Caridade e tornando-se ícone mundial de compaixão."],
+"09-06":["São Zacarias","profeta",null],
+"09-07":["Santa Regina","virgem e mártir",null],
+"09-08":["Natividade de Nossa Senhora","festa","Celebra-se o nascimento de Maria, aurora da salvação que traria ao mundo o Sol da Justiça, Jesus Cristo."],
+"09-09":["São Pedro Claver","presbítero, apóstolo dos escravizados","Dedicou a vida a acolher e cuidar dos africanos escravizados que chegavam à Colômbia, chamando-se 'escravo dos escravos'."],
+"09-10":["São Nicolau de Tolentino","religioso",null],
+"09-11":["São João Gabriel Perboyre","mártir",null],
+"09-12":["São Guido de Anderlecht","peregrino",null],
+"09-13":["São João Crisóstomo","bispo e doutor da Igreja","Chamado 'boca de ouro' por sua eloquência, pregou com coragem contra os abusos de seu tempo, mesmo enfrentando o exílio."],
+"09-14":["Exaltação da Santa Cruz","festa","A Igreja celebra a Cruz não como derrota, mas como trono de vitória — sinal do amor de Cristo que se entrega até o fim."],
+"09-15":["Nossa Senhora das Dores","memória","Contempla-se Maria ao pé da cruz, unida ao sofrimento do Filho, tornando-se companheira de todos os que atravessam a dor."],
+"09-16":["São Cornélio e São Cipriano","papa e bispo, mártires",null],
+"09-17":["São Roberto Belarmino","doutor da Igreja",null],
+"09-18":["São José de Copertino","religioso",null],
+"09-19":["São Januário","bispo e mártir",null],
+"09-20":["Santo André Kim Taegon e companheiros","mártires da Coreia","Primeiro sacerdote nativo coreano, foi martirizado junto de dezenas de fiéis leigos, testemunho da fé enraizada por missionários e catequistas."],
+"09-21":["São Mateus","apóstolo e evangelista","Cobrador de impostos chamado por Jesus a segui-lo, tornou-se apóstolo e escreveu o Evangelho voltado à comunidade judaico-cristã."],
+"09-22":["São Maurício","mártir",null],
+"09-23":["São Pio de Pietrelcina (Padre Pio)","presbítero, estigmatizado","Frade capuchinho que recebeu os estigmas da Paixão de Cristo, dedicou a vida ao confessionário e à intercessão pelos aflitos."],
+"09-24":["Nossa Senhora das Mercês","título mariano",null],
+"09-25":["São Cléofas","discípulo de Emaús",null],
+"09-26":["São Cosme e Damião","mártires, médicos","Irmãos médicos que curavam sem cobrar, unindo ciência e caridade — muito venerados no Brasil, especialmente pelas crianças."],
+"09-27":["São Vicente de Paulo","presbítero, patrono das obras de caridade","Dedicou a vida a servir os pobres e fundou congregações que continuam sua obra de caridade até hoje em todo o mundo."],
+"09-28":["São Venceslau","duque e mártir",null],
+"09-29":["São Miguel, São Gabriel e São Rafael","arcanjos","Mensageiros e protetores enviados por Deus — Miguel defende, Gabriel anuncia, Rafael cura — lembrando-nos da presença constante do Senhor."],
+"09-30":["São Jerônimo","presbítero e doutor da Igreja","Traduziu a Bíblia para o latim (a Vulgata), tornando as Escrituras acessíveis ao mundo ocidental por mais de mil anos."],
+"10-01":["Santa Teresinha do Menino Jesus","virgem e doutora da Igreja","Carmelita francesa que viveu sua 'pequena via' de confiança e amor nas coisas simples do dia a dia, tornando-se uma das santas mais amadas do mundo."],
+"10-02":["Santos Anjos da Guarda","memória","A Igreja recorda os anjos que Deus envia para nos guardar e acompanhar em cada passo da vida."],
+"10-03":["Santo André de Soveral e companheiros","mártires do Brasil",null],
+"10-04":["São Francisco de Assis","fundador","Filho de um rico comerciante, abraçou a pobreza radical por amor a Cristo e a toda a criação, fundando a Ordem Franciscana."],
+"10-05":["Santa Faustina Kowalska","religiosa, apóstola da Divina Misericórdia","Recebeu de Jesus a mensagem da Divina Misericórdia, hoje difundida no mundo inteiro através da coroazinha e da imagem de Jesus Misericordioso."],
+"10-06":["São Bruno","presbítero, fundador",null],
+"10-07":["Nossa Senhora do Rosário","memória","Celebra-se a devoção ao Rosário, oração que percorre os mistérios da vida de Cristo pelas mãos de Maria."],
+"10-08":["Santa Pelágia Penitente","eremita",null],
+"10-09":["São Luís Beltrán","missionário",null],
+"10-10":["São Daniel Comboni","bispo, missionário na África",null],
+"10-11":["São João XXIII","papa","Convocou o Concílio Vaticano II, abrindo a Igreja ao diálogo com o mundo moderno com bondade e simplicidade que lhe valeram o apelido de 'Papa Bom'."],
+"10-12":["Nossa Senhora Aparecida","padroeira do Brasil","Pescada nas águas do rio Paraíba do Sul, a pequena imagem de Nossa Senhora tornou-se o coração da devoção mariana no Brasil."],
+"10-13":["Beata Alexandrina de Balazar","virgem",null],
+"10-14":["São Calisto I","papa e mártir",null],
+"10-15":["Santa Teresa de Ávila","virgem e doutora da Igreja","Reformadora do Carmelo e mestra de oração, escreveu sobre as 'moradas' da alma com uma profundidade que ainda guia a espiritualidade cristã."],
+"10-16":["Santa Margarida Maria Alacoque","religiosa, vidente do Sagrado Coração",null],
+"10-17":["Santo Inácio de Antioquia","bispo e mártir",null],
+"10-18":["São Lucas Evangelista","médico e evangelista","Médico e companheiro de Paulo, escreveu o Evangelho da misericórdia e o Livro dos Atos dos Apóstolos."],
+"10-19":["São Paulo da Cruz","fundador",null],
+"10-20":["São Pedro de Alcântara","padroeiro do Brasil",null],
+"10-21":["Santa Úrsula","virgem e mártir",null],
+"10-22":["São João Paulo II","papa","Um dos pontificados mais longos da história, percorreu o mundo anunciando o Evangelho e proclamando: 'Não tenhais medo! Abri as portas a Cristo.'"],
+"10-23":["São João de Capistrano","presbítero",null],
+"10-24":["Santo Antônio Maria Claret","bispo, fundador",null],
+"10-25":["Frei Galvão (Santo Antônio de Sant'Ana Galvão)","religioso, primeiro santo nascido no Brasil","Frade franciscano conhecido por suas pílulas com dizeres bíblicos e por fundar um mosteiro em São Paulo, é venerado até hoje por curas e graças."],
+"10-26":["São José Gregorio Hernández","médico leigo",null],
+"10-27":["São Gonçalo de Lagos","presbítero",null],
+"10-28":["São Simão e São Judas Tadeu","apóstolos","Judas Tadeu, invocado nas causas difíceis e desesperadas, e Simão, o Zelote, seguiram Cristo até o martírio, levando o Evangelho a terras distantes."],
+"10-29":["São Narciso","bispo",null],
+"10-30":["Beata Maria Restituta Kafka","religiosa e mártir",null],
+"10-31":["Santo Afonso Rodrigues","religioso",null],
+"11-01":["Todos os Santos","solenidade","A Igreja celebra hoje todos os que já contemplam a face de Deus — conhecidos e anônimos — lembrando que a santidade é vocação de todo batizado."],
+"11-02":["Todos os Fiéis Defuntos","comemoração","Dia de recordar com esperança e oração todos os que já partiram, confiando-os à misericórdia de Deus."],
+"11-03":["São Martinho de Porres","religioso, patrono da caridade","Filho de escravizada e nobre espanhol no Peru colonial, viveu humildade extraordinária, cuidando de pobres, doentes e até dos animais."],
+"11-04":["São Carlos Borromeu","bispo",null],
+"11-05":["São Zacarias e Santa Isabel","pais de São João Batista",null],
+"11-06":["São Leonardo de Noblac","eremita",null],
+"11-07":["São Vilibrordo","bispo, missionário",null],
+"11-08":["Beato João Duns Escoto","teólogo",null],
+"11-09":["Dedicação da Basílica de São João de Latrão","festa",null],
+"11-10":["São Leão Magno","papa e doutor da Igreja",null],
+"11-11":["São Martinho de Tours","bispo","Soldado romano que dividiu sua capa com um mendigo no frio; tornou-se depois monge e bispo, símbolo da caridade cristã em ação."],
+"11-12":["São Josafá","bispo e mártir",null],
+"11-13":["Santo Estanislau Kostka","religioso jovem",null],
+"11-14":["São Serapião","mártir",null],
+"11-15":["Santo Alberto Magno","bispo e doutor da Igreja","Mestre de Santo Tomás de Aquino, dedicou-se ao estudo da natureza e da fé, sendo hoje padroeiro dos cientistas."],
+"11-16":["Santa Margarida da Escócia","rainha",null],
+"11-17":["Santa Isabel da Hungria","princesa, religiosa","Rainha que, após enviuvar, dedicou sua fortuna aos pobres e enfermos, vivendo com extrema simplicidade apesar de sua origem nobre."],
+"11-18":["Dedicação das Basílicas de São Pedro e São Paulo","festa",null],
+"11-19":["São Roque González e companheiros","mártires das reduções jesuíticas",null],
+"11-20":["São Félix de Valóis","fundador",null],
+"11-21":["Apresentação de Nossa Senhora","memória",null],
+"11-22":["Santa Cecília","virgem e mártir, padroeira da música","Segundo a tradição, cantava a Deus em seu coração mesmo em meio ao martírio — por isso é padroeira dos músicos e cantores."],
+"11-23":["São Clemente I","papa e mártir",null],
+"11-24":["Santo André Dung-Lac e companheiros","mártires do Vietnã",null],
+"11-25":["Santa Catarina de Alexandria","virgem e mártir",null],
+"11-26":["São Leonardo de Porto Maurício","presbítero",null],
+"11-27":["Nossa Senhora das Graças","medalha milagrosa",null],
+"11-28":["Santa Catarina Labouré","religiosa, vidente",null],
+"11-29":["São Saturnino de Toulouse","bispo e mártir",null],
+"11-30":["Santo André","apóstolo","Irmão de Pedro e o primeiro a ser chamado por Jesus, foi martirizado numa cruz em forma de X, hoje chamada 'cruz de Santo André'."],
+"12-01":["Santo Elígio","bispo, patrono dos ourives",null],
+"12-02":["São Silvério","papa e mártir",null],
+"12-03":["São Francisco Xavier","presbítero, missionário","Um dos primeiros jesuítas, atravessou mares para levar o Evangelho à Índia e ao Japão, sendo um dos maiores missionários da história."],
+"12-04":["São João Damasceno","presbítero e doutor da Igreja",null],
+"12-05":["São Savas","abade",null],
+"12-06":["São Nicolau de Mira","bispo","Bispo generoso conhecido por socorrer secretamente os necessitados; sua fama de bondade deu origem, com o tempo, à figura do Papai Noel."],
+"12-07":["Santo Ambrósio de Milão","bispo e doutor da Igreja","Bispo eloquente que batizou Santo Agostinho e defendeu com coragem a fé diante dos poderosos de seu tempo."],
+"12-08":["Imaculada Conceição","solenidade","Celebra-se que Maria foi preservada do pecado original desde sua concepção, preparada por Deus para ser Mãe do Salvador."],
+"12-09":["São Juan Diego","leigo indígena, vidente de Guadalupe","A ele Nossa Senhora apareceu no México em 1531, deixando sua imagem impressa milagrosamente na tilma, hoje venerada por milhões."],
+"12-10":["São João Roberts","mártir",null],
+"12-11":["São Dâmaso I","papa",null],
+"12-12":["Nossa Senhora de Guadalupe","padroeira da América Latina","Aparição mariana que uniu culturas indígena e espanhola num só rosto de Mãe, tornando-se símbolo profundo de identidade para todo o continente."],
+"12-13":["Santa Luzia de Siracusa","virgem e mártir","Consagrou sua vida a Cristo e foi martirizada por recusar um casamento imposto; é invocada como protetora da visão e padroeira da luz."],
+"12-14":["São João da Cruz","presbítero e doutor da Igreja","Místico e poeta, junto com Santa Teresa de Ávila reformou o Carmelo, escrevendo sobre a 'noite escura' da alma rumo à união com Deus."],
+"12-15":["Santa Susana","discípula",null],
+"12-16":["Santa Adelaide","imperatriz",null],
+"12-17":["Antífonas do 'Ó'","tempo do Advento","Nestes últimos dias antes do Natal, a liturgia entoa os grandes títulos do Messias esperado: Sabedoria, Senhor, Raiz de Jessé, Chave de Davi..."],
+"12-18":["São Graciano","bispo",null],
+"12-19":["Papa Urbano V","papa",null],
+"12-20":["São Domingos de Silos","abade",null],
+"12-21":["Beato Domingos da Prússia","monge, autor do Rosário",null],
+"12-22":["Santa Francisca Xavier Cabrini","religiosa, padroeira dos imigrantes","Freira italiana que atravessou o oceano para cuidar de imigrantes nos Estados Unidos, fundando escolas, orfanatos e hospitais."],
+"12-23":["São João Câncio","presbítero",null],
+"12-24":["Vigília de Natal","véspera da Solenidade","A Igreja aguarda em silêncio e expectativa o nascimento do Salvador, celebrado esta noite em todo o mundo."],
+"12-25":["Natal do Senhor","solenidade","Deus se faz homem e nasce numa manjedoura em Belém — o Verbo se fez carne e habitou entre nós."],
+"12-26":["Santo Estêvão","primeiro mártir","Diácono lapidado por proclamar a fé em Cristo, morreu perdoando seus algozes, à imagem do próprio Jesus."],
+"12-27":["São João Evangelista","apóstolo","O 'discípulo amado', permaneceu ao pé da cruz e escreveu o Evangelho que mais fala do amor de Deus."],
+"12-28":["Santos Inocentes","mártires","Recordam-se as crianças de Belém mortas por ordem de Herodes, temeroso do Rei que acabara de nascer — os primeiros mártires por causa de Cristo."],
+"12-29":["São Tomás Becket","bispo e mártir",null],
+"12-30":["São Rugero de Canas","bispo",null],
+"12-31":["São Silvestre I","papa",null]
+  };
+
+  // ---------- LITURGICAL SEASON (approximate) ----------
+  function computeEaster(year){
+    const a=year%19,b=Math.floor(year/100),c=year%100,d=Math.floor(b/4),e=b%4,
+      f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,
+      i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),
+      month=Math.floor((h+l-7*m+114)/31), day=((h+l-7*m+114)%31)+1;
+    return new Date(year, month-1, day);
+  }
+  function addDays(d,n){ const r=new Date(d); r.setDate(r.getDate()+n); return r; }
+  function sameDay(a,b){ return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
+
+  function liturgicalInfo(today){
+    const year = today.getFullYear();
+    const easter = computeEaster(year);
+    const ashWednesday = addDays(easter,-46);
+    const pentecost = addDays(easter,49);
+    const christmas = new Date(year,11,25);
+    const baptismOfLord = new Date(year,0,12); // approx
+    // Advent start: 4th Sunday before Dec 25
+    let d = new Date(year,11,25);
+    while(d.getDay()!==0){ d = addDays(d,-1); }
+    let adventStart = addDays(d,-21);
+
+    let seasonKey, seasonLabel, color;
+    if (today>=christmas || sameDay(today,christmas)){
+      seasonKey='christmas'; seasonLabel='Tempo do Natal'; color='var(--white-gold)';
+    } else if (today>=adventStart && today<christmas){
+      seasonKey='advent'; seasonLabel='Advento'; color='var(--violet)';
+    } else if (today<baptismOfLord || sameDay(today,baptismOfLord)){
+      seasonKey='christmas'; seasonLabel='Tempo do Natal'; color='var(--white-gold)';
+    } else if (today>=ashWednesday && today<easter){
+      seasonKey='lent'; seasonLabel='Quaresma'; color='var(--violet)';
+    } else if (today>=easter && today<=pentecost){
+      seasonKey='easter'; seasonLabel='Tempo Pascal'; color='var(--white-gold)';
+    } else {
+      seasonKey='ordinary'; seasonLabel='Tempo Comum'; color='var(--green)';
+    }
+    return {seasonKey, seasonLabel, color};
+  }
+
+  // ---------- STORAGE HELPERS ----------
+  async function safeGet(key){
+    try{ const r = await window.storage.get(key); return r ? r.value : null; }
+    catch(e){ return null; }
+  }
+  async function safeSet(key,value){
+    try{ await window.storage.set(key, value); }catch(e){}
+  }
+
+  // ---------- BUILD PAGE ----------
+  const today = new Date();
+  const mm = String(today.getMonth()+1).padStart(2,'0');
+  const dd = String(today.getDate()).padStart(2,'0');
+  const dateKey = `${mm}-${dd}`;
+
+  const dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 86400000);
+  const verse = VERSES[(dayOfYear-1+VERSES.length) % VERSES.length];
+
+  const saintEntry = SAINTS[dateKey] || ["Comunhão dos Santos","memória","Hoje a Igreja recorda a grande nuvem de testemunhas que já viveram a fé com fidelidade — conhecidos e anônimos, todos convidados à santidade."];
+  const [saintName, saintTitle, customBlurb] = saintEntry;
+
+  function templateBlurb(name, title){
+    const t = title.toLowerCase();
+    if (t.includes('mártir')) return `${name} entregou a vida por Cristo, dando testemunho supremo de fé em meio à perseguição.`;
+    if (t.includes('papa')) return `${name} guiou a Igreja como sucessor de Pedro, servindo o povo de Deus com zelo pastoral.`;
+    if (t.includes('doutor')) return `${name} deixou à Igreja um legado de sabedoria e ensino que ilumina a fé até hoje.`;
+    if (t.includes('bispo')) return `${name} pastoreou seu povo com dedicação, anunciando o Evangelho como sucessor dos apóstolos.`;
+    if (t.includes('rei') || t.includes('rainha') || t.includes('imperatriz') || t.includes('princesa') || t.includes('príncipe')) return `${name} exerceu seu lugar de destaque à luz da fé, colocando privilégio e poder a serviço dos mais pobres.`;
+    if (t.includes('apóstolo') || t.includes('evangelista')) return `${name} foi testemunha direta de Cristo, levando a Boa-Nova aos confins da terra.`;
+    if (t.includes('arcanjo')) return `${name} é mensageiro enviado por Deus, lembrando-nos de sua presença constante e protetora em nossa vida.`;
+    if (t.includes('virgem')) return `${name} consagrou a vida a Deus, cultivando um coração inteiramente entregue ao Senhor.`;
+    if (t.includes('leig')) return `${name} santificou a vida cotidiana, mostrando que a santidade está ao alcance de todo estado de vida.`;
+    if (t.includes('religios') || t.includes('monge') || t.includes('monja') || t.includes('abade') || t.includes('eremita') || t.includes('fundador') || t.includes('fundadora')) return `${name} viveu radicalmente o Evangelho, deixando um caminho de oração e serviço para os que vieram depois.`;
+    if (t.includes('solenidade') || t.includes('festa') || t.includes('memória') || t.includes('comemoração') || t.includes('mariano') || t.includes('aparição')) return `Hoje a Igreja celebra ${name}, convidando-nos a contemplar mais um mistério da fé.`;
+    return `A Igreja recorda hoje ${name}, exemplo de fé e amor a Deus para todos os fiéis.`;
+  }
+
+  const GOSPELS = {
+    "2026-08-29": {
+      ref: "Marcos 6,17-29",
+      theme: "Martírio de São João Batista",
+      icon: "martyr",
+      reflection: "A verdade tem um preço, mas nunca deixa de valer a pena. Que eu tenha hoje a coragem de João Batista para não calar o que é certo, mesmo diante do medo.",
+      verses: [
+        [17,"Porque o próprio Herodes mandara prender João, e o tinha atado no cárcere, por causa de Herodias, mulher de Filipe, seu irmão; porquanto tinha casado com ela."],
+        [18,"Porque João dizia a Herodes: Não te é lícito ter a mulher de teu irmão."],
+        [19,"E Herodias o espiava, e queria matá-lo, mas não podia."],
+        [20,"Porque Herodes temia a João, sabendo que era homem justo e santo; e o guardava; e, ouvindo-o, fazia muitas coisas, e de boa mente o escutava."],
+        [21,"E, chegando um dia oportuno em que Herodes, no dia do seu nascimento, dava uma ceia aos grandes, e tribunos, e príncipes da Galileia,"],
+        [22,"E, entrando a filha da mesma Herodias, e dançando, e agradando a Herodes e aos que estavam com ele à mesa, disse o rei à jovem: Pede-me o que quiseres, e eu to darei."],
+        [23,"E jurou-lhe, dizendo: Tudo o que me pedires te darei, ainda que seja metade do meu reino."],
+        [24,"E, saindo ela, disse a sua mãe: Que pedirei? E ela disse: A cabeça de João Batista."],
+        [25,"E, entrando ela logo com pressa ao rei, pediu, dizendo: Quero que sem demora me dês num prato a cabeça de João Batista."],
+        [26,"E o rei entristeceu-se muito; todavia, por causa do juramento, e dos que estavam à mesa com ele, não lha quis negar."],
+        [27,"E, enviando logo o rei um da guarda, mandou que lhe trouxesse ali a cabeça de João. E ele foi, e degolou-o no cárcere,"],
+        [28,"E trouxe a cabeça num prato, e deu-a à jovem, e a jovem a deu à sua mãe."],
+        [29,"E os seus discípulos, tendo ouvido isto, foram, e tomaram o seu corpo, e o puseram num sepulcro."]
+      ]
+    },
+    "2026-08-30": { ref:"Mateus 16,21-27", theme:"Quem quiser salvar a sua vida, perdê-la-á", icon:"cross", color:"green", reflection:"Seguir Jesus não é evitar a cruz, mas atravessá-la com Ele. Hoje posso me perguntar: o que preciso deixar de lado para ganhar a vida que realmente importa?", verses:[
+      [21,"Desde então começou Jesus Cristo a mostrar aos seus discípulos que convinha ir a Jerusalém, e padecer muitas coisas dos anciãos, e dos principais dos sacerdotes, e dos escribas, e ser morto, e ressuscitar ao terceiro dia."],
+      [22,"E Pedro, tomando-o à parte, começou a repreendê-lo, dizendo: Senhor, tem compaixão de ti; que isso não te aconteça."],
+      [23,"Mas ele, voltando-se, disse a Pedro: Para trás de mim, Satanás, que me serves de escândalo; porque não compreendes as coisas que são de Deus, mas sim as que são dos homens."],
+      [24,"Então disse Jesus aos seus discípulos: Se alguém quiser vir após mim, renuncie-se a si mesmo, tome sobre si a sua cruz, e siga-me;"],
+      [25,"Porque, qualquer que quiser salvar a sua vida, perdê-la-á, e qualquer que perder a sua vida por amor de mim, achá-la-á."],
+      [26,"Pois que aproveita ao homem ganhar todo o mundo, se perder a sua alma? Ou que dará o homem em troca da sua alma?"],
+      [27,"Porque o Filho do homem virá na glória de seu Pai, com os seus anjos; e então dará a cada um segundo as suas obras."]
+    ]},
+    "2026-08-31": { ref:"Lucas 4,16-30", theme:"Jesus lê o profeta Isaías na sinagoga de Nazaré", icon:"cross", color:"green", reflection:"Às vezes a Boa-Nova incomoda justamente quem está mais perto dela. Que eu não feche o coração a Deus só porque a mensagem soa familiar demais.", verses:[
+      [16,"E chegou a Nazaré, onde fora criado, e entrou, num sábado, na sinagoga, segundo o seu costume, e levantou-se para ler."],
+      [17,"E foi-lhe dado o livro do profeta Isaías; e, quando abriu o livro, achou o lugar em que estava escrito:"],
+      [18,"O Espírito do Senhor é sobre mim, pelo que me ungiu para evangelizar os pobres; enviou-me a curar os quebrantados de coração, a pregar liberdade aos cativos, e restauração da vista aos cegos, a pôr em liberdade os oprimidos,"],
+      [19,"A anunciar o ano aceitável do Senhor."],
+      [20,"E, cerrando o livro, e tornando-o ao ministro, assentou-se; e os olhos de todos na sinagoga estavam fitos nele."],
+      [21,"E começou a dizer-lhes: Hoje se cumpriu esta Escritura em vossos ouvidos."],
+      [22,"E todos lhe davam testemunho, e se maravilhavam das palavras de graça que saíam da sua boca, e diziam: Não é este o filho de José?"],
+      [23,"E ele lhes disse: Sem dúvida me direis esta parábola: Médico, cura-te a ti mesmo; faze também aqui na tua pátria tudo o que ouvimos ter sido feito em Cafarnaum."],
+      [24,"E disse: Em verdade vos digo que nenhum profeta é bem recebido na sua pátria."],
+      [25,"Em verdade vos digo que muitas viúvas havia em Israel nos dias de Elias, quando o céu se fechou por três anos e seis meses, de sorte que em toda a terra houve grande fome;"],
+      [26,"E a nenhuma delas foi enviado Elias, senão a uma mulher viúva em Sarepta de Sidom."],
+      [27,"E muitos leprosos havia em Israel no tempo do profeta Eliseu, e nenhum deles foi purificado, senão Naamã, o siro."],
+      [28,"E todos, na sinagoga, ao ouvirem isto, se encheram de ira;"],
+      [29,"E, levantando-se, o expulsaram da cidade, e o levaram até ao cume do monte em que a sua cidade estava edificada, para dali o precipitarem."],
+      [30,"Mas ele, passando pelo meio deles, foi-se retirando."]
+    ]},
+    "2026-09-01": { ref:"Lucas 4,31-37", theme:"Jesus cura um endemoninhado em Cafarnaum", icon:"cross", color:"green", reflection:"A palavra de Jesus tem autoridade para libertar o que nos aprisiona por dentro. Hoje posso confiar a Ele aquilo que sozinho não consigo vencer.", verses:[
+      [31,"E desceu a Cafarnaum, cidade da Galileia, e os ensinava nos sábados."],
+      [32,"E maravilhavam-se da sua doutrina, porque a sua palavra era com autoridade."],
+      [33,"E estava na sinagoga um homem que tinha um espírito de um demônio imundo, e clamou em grande voz,"],
+      [34,"Dizendo: Ah! Que temos contigo, Jesus Nazareno? Vieste destruir-nos? Bem sei quem és: o Santo de Deus."],
+      [35,"E Jesus o repreendeu, dizendo: Cala-te, e sai dele. E o demônio, lançando-o no meio, saiu dele, e não lhe fez mal algum."],
+      [36,"E veio espanto sobre todos, e falavam uns com os outros, dizendo: Que palavra é esta, pois com autoridade e poder ordena aos espíritos imundos, e eles saem?"],
+      [37,"E divulgava-se a sua fama por todos os lugares da circunvizinhança."]
+    ]},
+    "2026-09-02": { ref:"Lucas 4,38-44", theme:"Jesus cura a sogra de Simão e muitos enfermos", icon:"cross", color:"green", reflection:"Jesus não cura à distância fria, mas se inclina, toca, se aproxima. Que eu também saiba me aproximar de quem sofre ao meu redor hoje.", verses:[
+      [38,"E, levantando-se da sinagoga, entrou em casa de Simão. E a sogra de Simão estava enferma de uma grande febre; e rogaram-lhe por ela."],
+      [39,"E, inclinando-se para ela, repreendeu a febre, e a febre a deixou; e, levantando-se ela logo, os servia."],
+      [40,"E, quando o sol já se punha, todos os que tinham enfermos de diversas doenças lhos traziam; e ele punha as mãos sobre cada um deles e os curava."],
+      [41,"E também de muitos saíam demônios, gritando e dizendo: Tu és o Cristo, o Filho de Deus. Mas ele os repreendia, e não os deixava falar, porque sabiam que ele era o Cristo."],
+      [42,"E, sendo já dia, saiu, e foi para um lugar deserto; e as multidões o buscavam, e vieram até ele, e o detinham, para que não se ausentasse delas."],
+      [43,"Mas ele lhes disse: Também a outras cidades me é necessário anunciar o Reino de Deus, porque para isso fui enviado."],
+      [44,"E pregava nas sinagogas da Galileia."]
+    ]},
+    "2026-09-03": { ref:"Lucas 5,1-11", theme:"A pesca milagrosa e o chamado dos primeiros discípulos", icon:"apostle", color:"white", reflection:"Mesmo depois de uma noite sem pescar nada, a palavra de Jesus ainda pode encher as redes. Vale a pena confiar de novo, mesmo cansado.", verses:[
+      [1,"E aconteceu que, apertando-o a multidão para ouvir a palavra de Deus, ele estava junto ao lago de Genesaré,"],
+      [2,"E viu estar dois barcos junto à praia do lago; e os pescadores, tendo já saído deles, estavam lavando as redes."],
+      [3,"E, entrando em um daqueles barcos, que era o de Simão, pediu-lhe que o afastasse um pouco da terra; e, assentando-se, ensinava do barco a multidão."],
+      [4,"E, quando acabou de falar, disse a Simão: Faze-te ao mar alto, e lançai as vossas redes para pescar."],
+      [5,"E, respondendo Simão, disse-lhe: Mestre, havendo trabalhado toda a noite, nada apanhamos; mas, por causa da tua palavra, lançarei a rede."],
+      [6,"E, fazendo isso, encerraram uma grande quantidade de peixes, e rompia-se-lhes a rede."],
+      [7,"E fizeram sinal aos companheiros que estavam no outro barco, para que os viessem ajudar; e vieram, e encheram ambos os barcos, de maneira tal que quase iam a pique."],
+      [8,"E, vendo isto, Simão Pedro caiu de joelhos aos pés de Jesus, dizendo: Senhor, afasta-te de mim, porque sou um homem pecador."],
+      [9,"Pois um espanto o tinha possuído, e a todos os que com ele estavam, por causa da pesca que haviam feito;"],
+      [10,"E, da mesma sorte, também a Tiago e João, filhos de Zebedeu, que eram companheiros de Simão. E disse Jesus a Simão: Não temas: desde agora serás pescador de homens."],
+      [11,"E, levando os barcos a terra, deixaram tudo e o seguiram."]
+    ]},
+    "2026-09-04": { ref:"Lucas 5,33-39", theme:"O esposo está com eles: sobre o jejum e o vinho novo", icon:"cross", color:"green", reflection:"Deus não pede rituais vazios, mas um coração disposto a se renovar. Que eu não tente guardar a alegria do Evangelho em odres velhos demais para ela.", verses:[
+      [33,"E disseram-lhe eles: Por que jejuam os discípulos de João muitas vezes, e fazem orações, como também os dos fariseus, mas os teus comem e bebem?"],
+      [34,"Mas ele lhes disse: Podeis vós fazer jejuar os filhos das bodas, enquanto o esposo está com eles?"],
+      [35,"Dias virão, porém, em que lhes será tirado o esposo; naqueles dias, então, jejuarão."],
+      [36,"E dizia-lhes também uma parábola: Ninguém tira um pedaço de vestido novo para o coser em vestido velho; de outra sorte, também o novo se rasgará, e ao velho não conviria o pedaço do novo."],
+      [37,"E ninguém deita vinho novo em odres velhos; de outra sorte, o vinho novo romperá os odres, e entornar-se-á o vinho, e os odres se perderão."],
+      [38,"Mas o vinho novo deve deitar-se em odres novos, e ambos juntamente se conservam."],
+      [39,"E ninguém que beber do velho quer logo o novo, porque diz: Melhor é o velho."]
+    ]},
+    "2026-09-05": { ref:"Lucas 6,1-5", theme:"O Filho do homem é Senhor até do sábado", icon:"cross", color:"green", reflection:"A lei existe para servir à vida, não o contrário. Hoje posso rever se alguma regra que sigo perdeu de vista o amor que deveria proteger.", verses:[
+      [1,"E aconteceu, no sábado, que ele passava pelas searas, e os seus discípulos iam arrancando espigas e, esfregando-as com as mãos, as comiam."],
+      [2,"E alguns dos fariseus lhes disseram: Por que fazeis o que não é lícito fazer nos sábados?"],
+      [3,"E Jesus, respondendo-lhes, disse: Nunca lestes o que fez Davi quando teve fome, ele e os que com ele estavam?"],
+      [4,"Como entrou na casa de Deus, tomou os pães da proposição, e os comeu, e deu também aos que estavam com ele, os quais não é lícito comer, senão só aos sacerdotes?"],
+      [5,"E dizia-lhes: O Filho do homem é Senhor até do sábado."]
+    ]},
+    "2026-09-06": { ref:"Mateus 18,15-20", theme:"A correção fraterna", icon:"apostle", color:"green", reflection:"Corrigir com amor é também um ato de cuidado fraterno. Que eu tenha coragem e delicadeza para buscar a reconciliação, em vez do silêncio que afasta.", verses:[
+      [15,"Ora, se teu irmão pecar contra ti, vai, e repreende-o entre ti e ele só; se te ouvir, ganhaste a teu irmão;"],
+      [16,"Se, porém, não te ouvir, leva ainda contigo um ou dois, para que pela boca de duas ou três testemunhas toda a palavra se confirme."],
+      [17,"E se não as ouvir, dize-o à igreja; e se também não ouvir a igreja, considera-o como um gentio e publicano."],
+      [18,"Em verdade vos digo que tudo o que ligardes na terra será ligado no céu, e tudo o que desligardes na terra será desligado no céu."],
+      [19,"Digo-vos, outrossim, que, se dois de vós concordarem na terra acerca de qualquer coisa que pedirem, isso lhes será feito por meu Pai, que está nos céus."],
+      [20,"Porque onde estiverem dois ou três reunidos em meu nome, aí estou eu no meio deles."]
+    ]},
+    "2026-09-07": { ref:"Lucas 6,6-11", theme:"A cura da mão mirrada no sábado", icon:"cross", color:"green", reflection:"Fazer o bem nunca está fora de hora. Que eu não deixe regras ou hábitos me impedirem de estender a mão a quem precisa hoje.", verses:[
+      [6,"E aconteceu também noutro sábado que entrou na sinagoga, e ensinava. E estava ali um homem que tinha a mão direita mirrada."],
+      [7,"E os escribas e fariseus atentavam nele, se curaria no sábado, para acharem de que o acusar."],
+      [8,"Mas ele conhecia os seus pensamentos, e disse ao homem que tinha a mão mirrada: Levanta-te, e põe-te em pé no meio. E ele, levantando-se, pôs-se em pé."],
+      [9,"Então lhes disse Jesus: Uma coisa vos perguntarei: É lícito nos sábados fazer bem, ou fazer mal? Salvar a vida, ou tirá-la?"],
+      [10,"E, olhando para todos em redor, disse ao homem: Estende a tua mão. E ele assim o fez, e a sua mão foi restituída sã como a outra."],
+      [11,"E ficaram cheios de furor, e uns com os outros conferenciavam sobre o que fariam a Jesus."]
+    ]},
+    "2026-09-08": { ref:"Mateus 1,18-23", theme:"Natividade da Virgem Maria — o nascimento de Jesus é anunciado a José", icon:"marian", color:"white", reflection:"Deus escreve certo por linhas tortas, como fez na história de José. Que eu confie no plano d'Ele mesmo quando nada parece fazer sentido ainda.", verses:[
+      [18,"Ora, o nascimento de Jesus Cristo foi assim: Estando Maria, sua mãe, desposada com José, antes de se ajuntarem, achou-se ter concebido do Espírito Santo."],
+      [19,"Então José, seu marido, como era justo, e a não queria infamar, intentou deixá-la secretamente."],
+      [20,"E, projetando ele isto, eis que em sonho lhe apareceu um anjo do Senhor, dizendo: José, filho de Davi, não temas receber a Maria, tua mulher, pois o que nela está gerado é do Espírito Santo;"],
+      [21,"E dará à luz um filho e lhe porás o nome de JESUS; porque ele salvará o seu povo dos seus pecados."],
+      [22,"E tudo isto aconteceu para que se cumprisse o que fora dito da parte do Senhor, pelo profeta, que diz:"],
+      [23,"Eis que a virgem conceberá, e dará à luz um filho, e chamar-lhe-ão pelo nome de Emanuel, que traduzido é: Deus conosco."]
+    ]},
+    "2026-09-09": { ref:"Lucas 6,20-26", theme:"Bem-aventurados os pobres, ai de vós os ricos", icon:"cross", color:"green", reflection:"As bem-aventuranças invertem a lógica do mundo: quem parece ter menos, no Reino, tem tudo. Onde busco minha verdadeira segurança hoje?", verses:[
+      [20,"E, levantando ele os olhos para os seus discípulos, dizia: Bem-aventurados vós, os pobres, porque vosso é o Reino de Deus."],
+      [21,"Bem-aventurados vós, que agora tendes fome, porque sereis fartos. Bem-aventurados vós, que agora chorais, porque haveis de rir."],
+      [22,"Bem-aventurados sereis quando os homens vos odiarem, e quando vos separarem, e vos injuriarem, e rejeitarem o vosso nome como mau, por causa do Filho do homem."],
+      [23,"Alegrai-vos naquele dia, e exultai, porque eis que é grande o vosso galardão no céu; porque assim faziam seus pais aos profetas."],
+      [24,"Mas ai de vós, ricos! Porque já tendes a vossa consolação."],
+      [25,"Ai de vós, que estais fartos! Porque tereis fome. Ai de vós, que agora rides! Porque vos lamentareis e chorareis."],
+      [26,"Ai de vós, quando todos os homens falarem bem de vós! Porque assim faziam seus pais aos falsos profetas."]
+    ]},
+    "2026-09-10": { ref:"Lucas 6,27-38", theme:"Amai a vossos inimigos", icon:"cross", color:"green", reflection:"Amar quem nos fere é o pedido mais exigente do Evangelho — e o mais transformador. Hoje posso escolher a misericórdia em vez da vingança.", verses:[
+      [27,"Mas a vós, que ouvis, digo: Amai a vossos inimigos, fazei bem aos que vos odeiam;"],
+      [28,"Bendizei os que vos maldizem, e orai pelos que vos caluniam."],
+      [29,"Ao que te ferir numa face, oferece-lhe também a outra; e ao que te houver tirado a capa, não lhe negues também a túnica."],
+      [30,"E dá a qualquer que te pedir; e ao que tomar o que é teu, não lho tornes a pedir."],
+      [31,"E como vós quereis que os homens vos façam, da mesma sorte fazei-lhes vós também."],
+      [32,"E, se amardes aos que vos amam, que recompensa tereis? Porque também os pecadores amam aos que os amam."],
+      [33,"E se fizerdes bem aos que vos fazem bem, que recompensa tereis? Também os pecadores fazem o mesmo."],
+      [34,"E se emprestardes àqueles de quem esperais tornar a receber, que recompensa tereis? Também os pecadores emprestam aos pecadores, para tornarem a receber outro tanto."],
+      [35,"Amai, pois, a vossos inimigos, e fazei bem, e emprestai, sem nada esperardes, e será grande o vosso galardão, e sereis filhos do Altíssimo; porque ele é benigno até para com os ingratos e maus."],
+      [36,"Sede, pois, misericordiosos, como também vosso Pai é misericordioso."],
+      [37,"Não julgueis, e não sereis julgados; não condeneis, e não sereis condenados; perdoai, e sereis perdoados."],
+      [38,"Dai, e dar-se-vos-á; boa medida, recalcada, sacudida e transbordando vos deitarão no vosso regaço; porque com a mesma medida com que medirdes vos tornarão a medir."]
+    ]},
+    "2026-09-11": { ref:"Lucas 6,39-42", theme:"Pode um cego guiar outro cego?", icon:"cross", color:"green", reflection:"Antes de apontar a falha do outro, vale olhar para dentro. Que eu tenha humildade para reconhecer minhas próprias vigas antes de julgar o argueiro alheio.", verses:[
+      [39,"E dizia-lhes uma parábola: Pode porventura um cego guiar outro cego? Não cairão ambos na cova?"],
+      [40,"O discípulo não é sobre o seu mestre, mas todo o que for perfeito será como o seu mestre."],
+      [41,"E por que vês tu o argueiro que está no olho de teu irmão, e não reparas na trave que está no teu próprio olho?"],
+      [42,"Ou como podes dizer a teu irmão: Irmão, deixa-me tirar o argueiro que está no teu olho, não atentando tu mesmo na trave que está no teu olho? Hipócrita, tira primeiro a trave do teu olho, e então verás bem para tirar o argueiro que está no olho de teu irmão."]
+    ]},
+    "2026-09-12": { ref:"Lucas 6,43-49", theme:"A casa edificada sobre a rocha", icon:"cross", color:"green", reflection:"Fé que não se traduz em prática é uma casa sem alicerce. Que minhas escolhas de hoje sejam a rocha sobre a qual construo minha vida.", verses:[
+      [43,"Porque não há árvore boa que dê mau fruto, nem tampouco árvore má que dê bom fruto."],
+      [44,"Porque cada árvore se conhece pelo seu próprio fruto, pois não se colhem figos dos espinheiros, nem se vindimam uvas dos abrolhos."],
+      [45,"O homem bom tira o bem do bom tesouro do seu coração, e o homem mau tira do mau tesouro o mal; porque da abundância do coração fala a boca."],
+      [46,"E por que me chamais, Senhor, Senhor, e não fazeis o que eu digo?"],
+      [47,"Qualquer que vem a mim, e ouve as minhas palavras, e as pratica, eu vos mostrarei a quem é semelhante."],
+      [48,"É semelhante ao homem que, edificando uma casa, cavou, aprofundou, e pôs os alicerces sobre pedra; e, vindo a enchente, bateu com ímpeto a corrente naquela casa, mas não a pôde abalar, porque estava fundada sobre pedra."],
+      [49,"Mas o que ouve, e não faz, é semelhante ao homem que edificou uma casa sobre terra, sem alicerces, na qual bateu a corrente com ímpeto, e logo caiu; e foi grande a ruína daquela casa."]
+    ]},
+    "2026-09-13": { ref:"Mateus 18,21-35", theme:"A parábola do servo que não perdoou", icon:"cross", color:"green", reflection:"Fomos perdoados de uma dívida impagável — como posso então guardar rancor de tão pouco? Que eu solte hoje o que carrego contra alguém.", verses:[
+      [21,"Então Pedro, acercando-se dele, disse: Senhor, até quantas vezes pecará meu irmão contra mim, e eu lhe perdoarei? Até sete?"],
+      [22,"Disse-lhe Jesus: Não te digo que até sete; mas, até setenta vezes sete."],
+      [23,"Por isso o Reino dos céus é semelhante a um certo rei que quis fazer contas com os seus servos."],
+      [24,"E, começando a fazer as contas, foi-lhe apresentado um que lhe devia dez mil talentos;"],
+      [25,"Não tendo ele, porém, com que pagar, ordenou o seu senhor que fosse vendido, e sua mulher e filhos, e tudo quanto tinha, e que a dívida se pagasse."],
+      [26,"Então aquele servo, prostrando-se, o adorava, dizendo: Senhor, sê generoso para comigo, e tudo te pagarei."],
+      [27,"Então o senhor daquele servo, movido de íntima compaixão, soltou-o e perdoou-lhe a dívida."],
+      [28,"Mas, saindo aquele servo, encontrou um dos seus conservos, que lhe devia cem dinheiros, e, lançando mão dele, sufocava-o, dizendo: Paga-me o que me deves."],
+      [29,"Então o seu companheiro, prostrando-se aos seus pés, rogava-lhe, dizendo: Sê generoso para comigo, e tudo te pagarei."],
+      [30,"Ele, porém, não quis; antes foi, e lançou-o na prisão até que pagasse a dívida."],
+      [31,"Vendo, pois, os seus conservos o que acontecera, contristaram-se muito, e foram declarar ao seu senhor tudo o que se havia passado."],
+      [32,"Então o seu senhor, chamando-o, disse-lhe: Servo malvado, perdoei-te toda aquela dívida, porque me suplicaste;"],
+      [33,"Não devias tu, igualmente, compadecer-te do teu companheiro, como eu me compadeci de ti?"],
+      [34,"E, indignado, o seu senhor o entregou aos verdugos, até que pagasse tudo o que lhe devia."],
+      [35,"Assim vos fará também meu Pai celestial, se do coração não perdoardes, cada um a seu irmão, as suas ofensas."]
+    ]},
+    "2026-09-14": { ref:"João 3,13-17", theme:"Exaltação da Santa Cruz — como Moisés levantou a serpente", icon:"cross", color:"red", reflection:"A cruz, que parecia derrota, é o maior sinal de amor já dado ao mundo. Olhar para ela hoje é lembrar o quanto sou amado.", verses:[
+      [13,"Ora, ninguém subiu ao céu, senão o que desceu do céu, o Filho do homem, que está no céu."],
+      [14,"E, como Moisés levantou a serpente no deserto, assim importa que o Filho do homem seja levantado,"],
+      [15,"Para que todo aquele que nele crê não pereça, mas tenha a vida eterna."],
+      [16,"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna."],
+      [17,"Porque Deus enviou o seu Filho ao mundo, não para que condenasse o mundo, mas para que o mundo fosse salvo por ele."]
+    ]},
+    "2026-09-15": { ref:"João 19,25-27", theme:"Nossa Senhora das Dores, junto à cruz", icon:"marian", color:"white", reflection:"Maria permaneceu junto à cruz mesmo sem entender tudo. Que eu também saiba ficar, em oração, ao lado de quem sofre, sem fugir da dor alheia.", verses:[
+      [25,"E junto à cruz de Jesus estavam sua mãe, e a irmã de sua mãe, Maria, mulher de Cléofas, e Maria Madalena."],
+      [26,"Ora, Jesus, vendo ali sua mãe, e que o discípulo a quem ele amava estava presente, disse a sua mãe: Mulher, eis aí o teu filho."],
+      [27,"Depois disse ao discípulo: Eis aí tua mãe. E desde aquela hora o discípulo a recebeu em sua casa."]
+    ]},
+    "2026-09-16": { ref:"Lucas 7,31-35", theme:"São Cornélio e São Cipriano — a sabedoria é justificada por seus filhos", icon:"martyr", color:"red", reflection:"É fácil criticar o que não se encaixa nas nossas expectativas. Que eu esteja aberto a reconhecer a obra de Deus mesmo quando ela vem de um jeito inesperado.", verses:[
+      [31,"E disse o Senhor: A que compararei, pois, os homens desta geração, e a que são semelhantes?"],
+      [32,"São semelhantes aos meninos que se assentam nas praças, e clamam uns aos outros, e dizem: Tocamo-vos flauta, e não dançastes; cantamo-vos lamentações, e não chorastes."],
+      [33,"Porque veio João Batista, que nem comia pão nem bebia vinho, e dizeis: Tem demônio."],
+      [34,"Veio o Filho do homem, que come e bebe, e dizeis: Eis aí um comilão, e bebedor de vinho, amigo de publicanos e pecadores."],
+      [35,"Mas a sabedoria é justificada por todos os seus filhos."]
+    ]},
+    "2026-09-17": { ref:"Lucas 7,36-50", theme:"A mulher pecadora unge os pés de Jesus", icon:"cross", color:"green", reflection:"Quem ama muito é porque recebeu muito perdão. Hoje posso deixar de lado o orgulho e me aproximar de Deus como essa mulher: sem vergonha do meu amor.", verses:[
+      [36,"E rogou-lhe um dos fariseus que comesse com ele; e, entrando em casa do fariseu, assentou-se à mesa."],
+      [37,"E eis que uma mulher da cidade, uma pecadora, sabendo que ele estava à mesa em casa do fariseu, levou um vaso de alabastro com unguento,"],
+      [38,"E, estando por detrás, aos seus pés, chorando, começou a regar-lhe os pés com lágrimas, e enxugava-os com os cabelos da sua cabeça; e beijava-lhe os pés, e ungia-lhos com o unguento."],
+      [39,"E, vendo isto o fariseu que o havia convidado, falou entre si, dizendo: Se este fora profeta, bem saberia quem e qual é a mulher que lhe tocou, pois é uma pecadora."],
+      [40,"E Jesus, respondendo, disse-lhe: Simão, uma coisa tenho a dizer-te. E ele disse: Mestre, dize."],
+      [41,"Um certo credor tinha dois devedores; um devia-lhe quinhentos dinheiros, e outro cinquenta."],
+      [42,"E, não tendo eles com que pagar, perdoou a ambos. Qual deles, pois, o amará mais?"],
+      [43,"E, respondendo Simão, disse: Suponho que aquele a quem mais perdoou. E ele lhe disse: Bem julgaste."],
+      [44,"E, voltando-se para a mulher, disse a Simão: Vês esta mulher? Entrei em tua casa, e não me deste água para os pés; mas esta regou-me os pés com lágrimas, e enxugou-mos com os cabelos da sua cabeça."],
+      [45,"Não me deste ósculo; mas esta, desde que entrou, não cessou de beijar-me os pés."],
+      [46,"Não ungiste a minha cabeça com óleo; mas esta ungiu com unguento os meus pés."],
+      [47,"Por isso te digo que os seus muitos pecados lhe são perdoados, porque muito amou; mas aquele a quem pouco se perdoa, pouco ama."],
+      [48,"E disse a ela: Os teus pecados te são perdoados."],
+      [49,"E os que estavam com ele à mesa começaram a dizer entre si: Quem é este, que até perdoa pecados?"],
+      [50,"E disse à mulher: A tua fé te salvou; vai-te em paz."]
+    ]},
+    "2026-09-18": { ref:"Lucas 8,1-3", theme:"As mulheres que serviam a Jesus", icon:"cross", color:"green", reflection:"Muitas mulheres sustentaram, com o próprio trabalho, a missão de Jesus — um serviço silencioso, mas essencial. Que eu valorize também os gestos discretos de quem sustenta a fé ao meu redor.", verses:[
+      [1,"E aconteceu depois que ele andava de cidade em cidade, e de aldeia em aldeia, pregando e anunciando o Reino de Deus, e os doze iam com ele,"],
+      [2,"E também algumas mulheres que haviam sido curadas de espíritos malignos e de enfermidades: Maria, chamada Madalena, da qual saíram sete demônios,"],
+      [3,"E Joana, mulher de Cuza, procurador de Herodes, e Susana, e muitas outras que o serviam com os seus bens."]
+    ]},
+    "2026-09-19": { ref:"Lucas 8,4-15", theme:"A parábola do semeador", icon:"cross", color:"green", reflection:"A semente é a mesma; o que muda é o solo do coração. Hoje posso preparar minha escuta para que a Palavra realmente frutifique em mim.", verses:[
+      [4,"E, ajuntando-se uma grande multidão, e vindo a ele de todas as cidades, disse por parábola:"],
+      [5,"Saiu um semeador a semear a sua semente, e, quando semeava, uma parte caiu junto do caminho, e foi pisada, e as aves do céu a comeram."],
+      [6,"E outra caiu sobre pedra, e, nascida, secou-se, porque não tinha umidade."],
+      [7,"E outra caiu no meio de espinhos, e, nascendo com ela os espinhos, sufocaram-na."],
+      [8,"E outra caiu em boa terra e, nascida, produziu fruto, cem por um. Dizendo ele isto, clamava: Quem tem ouvidos para ouvir, ouça."],
+      [9,"E os seus discípulos o interrogaram, dizendo, que parábola era esta."],
+      [10,"E ele disse: A vós é dado conhecer os mistérios do Reino de Deus, mas aos outros por parábolas, para que, vendo, não vejam, e, ouvindo, não entendam."],
+      [11,"É pois esta a parábola: A semente é a palavra de Deus."],
+      [12,"E os que estão junto do caminho são os que ouvem; mas depois vem o diabo, e tira-lhes do coração a palavra, para que não suceda que, crendo, se salvem."],
+      [13,"E os que estão sobre pedra são os que, ouvindo a palavra, a recebem com alegria; mas estes não têm raiz, apenas creem por algum tempo, e no tempo da tentação se desviam."],
+      [14,"E o que caiu entre espinhos são os que ouviram, e, indo, são sufocados pelos cuidados, riquezas e deleites da vida, e não dão fruto com perfeição."],
+      [15,"Mas o que caiu em boa terra são os que, ouvindo a palavra, a retêm num coração honesto e bom, e dão fruto com perseverança."]
+    ]},
+    "2026-09-20": { ref:"Mateus 20,1-16", theme:"Os trabalhadores da vinha", icon:"cross", color:"green", reflection:"A generosidade de Deus não segue a lógica do mérito humano. Que eu me alegre com a graça recebida por todos, sem invejar a bondade Dele com os outros.", verses:[
+      [1,"Porque o Reino dos céus é semelhante a um homem, pai de família, que saiu de madrugada a assalariar trabalhadores para a sua vinha."],
+      [2,"E, tendo ajustado com os trabalhadores a um dinheiro por dia, mandou-os para a sua vinha."],
+      [3,"E, saindo perto da hora terceira, viu outros que estavam ociosos na praça,"],
+      [4,"E disse-lhes: Ide vós também para a vinha, e dar-vos-ei o que for justo. E eles foram."],
+      [5,"Depois, saindo perto da hora sexta e da nona, fez o mesmo."],
+      [6,"E, saindo perto da hora undécima, achou outros que estavam ociosos, e disse-lhes: Por que estais aqui todo o dia ociosos?"],
+      [7,"Disseram-lhe eles: Porque ninguém nos assalariou. Disse-lhes ele: Ide também vós para a vinha, e recebereis o que for justo."],
+      [8,"E, sendo chegada a tarde, disse o senhor da vinha ao seu mordomo: Chama os trabalhadores, e paga-lhes o jornal, começando pelos derradeiros até os primeiros."],
+      [9,"E, chegando os que foram perto da hora undécima, receberam um dinheiro cada um."],
+      [10,"Chegando também os primeiros, cuidaram que haviam de receber mais; mas também receberam um dinheiro cada um."],
+      [11,"E, recebendo-o, murmuravam contra o pai de família,"],
+      [12,"Dizendo: Estes últimos trabalharam só uma hora, e os igualaste conosco, que suportamos a fadiga e a calma do dia."],
+      [13,"Mas ele, respondendo, disse a um deles: Amigo, não te faço agravo; não ajustaste tu comigo por um dinheiro?"],
+      [14,"Toma o que é teu, e vai-te; eu quero dar a este derradeiro tanto como a ti."],
+      [15,"Ou não me é lícito fazer o que quiser do que é meu? Ou é mau o teu olho porque eu sou bom?"],
+      [16,"Assim os últimos serão primeiros, e os primeiros últimos, porque muitos são chamados, mas poucos escolhidos."]
+    ]},
+    "2026-09-21": { ref:"Mateus 9,9-13", theme:"São Mateus — o chamado do publicano", icon:"apostle", color:"red", reflection:"Jesus chama justamente quem se sente indigno demais para ser chamado. Hoje posso deixar para trás o que me afasta d'Ele e simplesmente segui-lo, como Mateus.", verses:[
+      [9,"E Jesus, passando adiante dali, viu um homem, chamado Mateus, sentado na coletoria, e disse-lhe: Segue-me. E ele, levantando-se, o seguiu."],
+      [10,"E aconteceu que, estando ele à mesa em casa, eis que chegaram muitos publicanos e pecadores, e se assentaram à mesa com ele e seus discípulos."],
+      [11,"E os fariseus, vendo isto, disseram aos seus discípulos: Por que come o vosso Mestre com publicanos e pecadores?"],
+      [12,"Jesus, porém, ouvindo, disse-lhes: Os que estão sãos não precisam de médico, mas sim os que estão enfermos."],
+      [13,"Ide, porém, e aprendei o que significa: Misericórdia quero, e não sacrifícios. Porque eu não vim chamar os justos, mas os pecadores, ao arrependimento."]
+    ]},
+    "2026-09-22": { ref:"Lucas 8,19-21", theme:"Minha mãe e meus irmãos são os que ouvem a palavra de Deus", icon:"cross", color:"green", reflection:"Pertencer à família de Jesus não é questão de sangue, mas de escuta e prática da Palavra. Como estou vivendo isso, de fato, hoje?", verses:[
+      [19,"E foram ter com ele sua mãe e seus irmãos, e não podiam chegar a ele por causa da multidão."],
+      [20,"E foi-lhe dito por alguns: Tua mãe e teus irmãos estão fora, e querem ver-te."],
+      [21,"Ele, porém, respondendo, disse-lhes: Minha mãe e meus irmãos são os que ouvem a palavra de Deus e a praticam."]
+    ]},
+    "2026-09-23": { ref:"Lucas 9,1-6", theme:"São Pio de Pietrelcina — o envio dos Doze", icon:"apostle", color:"white", reflection:"Jesus envia sem excesso de bagagem, confiando na providência. Que eu também saiba anunciar o bem com simplicidade, sem depender de tantas seguranças.", verses:[
+      [1,"E, convocando os seus doze discípulos, deu-lhes poder e autoridade sobre todos os demônios, e para curarem enfermidades."],
+      [2,"E enviou-os a pregar o Reino de Deus, e a curar os enfermos."],
+      [3,"E disse-lhes: Nada leveis para o caminho, nem bordões, nem alforje, nem pão, nem dinheiro, nem tenhais dois vestidos cada um."],
+      [4,"E, em qualquer casa em que entrardes, ficai ali, e dali saí."],
+      [5,"E, em qualquer lugar onde vos não receberem, saindo vós daquela cidade, sacudi até o pó dos vossos pés, em testemunho contra eles."],
+      [6,"E, saindo eles, percorriam as aldeias, evangelizando e curando por toda a parte."]
+    ]},
+    "2026-09-24": { ref:"Lucas 9,7-9", theme:"A perplexidade de Herodes", icon:"cross", color:"green", reflection:"Herodes ouviu falar de Jesus, mas nunca realmente o buscou de coração aberto. Que a minha curiosidade sobre Deus se torne, hoje, um encontro verdadeiro.", verses:[
+      [7,"E ouviu Herodes, o tetrarca, tudo quanto Jesus fazia, e estava perplexo, porque diziam alguns que João ressuscitara dos mortos,"],
+      [8,"E outros, que Elias tinha aparecido, e outros, que um dos antigos profetas havia ressuscitado."],
+      [9,"E disse Herodes: A João eu degolei; quem é, pois, este de quem ouço tais coisas? E procurava vê-lo."]
+    ]},
+    "2026-09-25": { ref:"Lucas 9,18-22", theme:"Tu és o Cristo de Deus", icon:"cross", color:"green", reflection:"'E vós, quem dizeis que eu sou?' — a pergunta de Jesus a Pedro também é para mim hoje. Minha resposta se mostra mais nas escolhas do que nas palavras.", verses:[
+      [18,"E aconteceu que, estando ele orando à parte, achavam-se com ele os discípulos; e perguntou-lhes, dizendo: Quem dizem as multidões que eu sou?"],
+      [19,"E, respondendo eles, disseram: Uns dizem: João Batista; outros: Elias; e outros: Que ressuscitou algum dos antigos profetas."],
+      [20,"E disse-lhes: E vós, quem dizeis que eu sou? E, respondendo Pedro, disse: O Cristo de Deus."],
+      [21,"E, admoestando-os, mandou-lhes que a ninguém dissessem isso,"],
+      [22,"Dizendo: É necessário que o Filho do homem padeça muitas coisas, e seja rejeitado pelos anciãos, e pelos principais dos sacerdotes, e pelos escribas, e seja morto, e ressuscite ao terceiro dia."]
+    ]},
+    "2026-09-26": { ref:"Lucas 9,43b-45", theme:"O Filho do homem será entregue nas mãos dos homens", icon:"cross", color:"green", reflection:"Os discípulos temiam entender o caminho da cruz. Que eu não fuja das verdades difíceis da fé só porque ainda não as compreendo por completo.", verses:[
+      [43,"E todos se maravilhavam da grandeza de Deus. E, maravilhando-se todos de tudo o que Jesus fazia, disse aos seus discípulos:"],
+      [44,"Ponde estas palavras em vossos ouvidos, porque o Filho do homem será entregue nas mãos dos homens."],
+      [45,"Mas eles não entendiam esta palavra, que lhes era encoberta para que não a compreendessem; e temiam perguntar-lhe a respeito dessa palavra."]
+    ]},
+    "2026-09-27": { ref:"Mateus 21,28-32", theme:"A parábola dos dois filhos", icon:"cross", color:"green", reflection:"Vale mais o coração que muda de ideia e age do que a palavra bonita sem prática. Hoje, minhas atitudes correspondem ao que digo acreditar?", verses:[
+      [28,"Mas que vos parece? Um homem tinha dois filhos, e, chegando-se ao primeiro, disse: Filho, vai trabalhar hoje na minha vinha."],
+      [29,"Ele, porém, respondendo, disse: Não quero. Mas depois, arrependendo-se, foi."],
+      [30,"E, chegando-se ao segundo, falou-lhe de igual modo; e, respondendo ele, disse: Sim, senhor. Mas não foi."],
+      [31,"Qual dos dois fez a vontade do pai? Disseram-lhe eles: O primeiro. Disse-lhes Jesus: Em verdade vos digo que os publicanos e as meretrizes entram adiante de vós no Reino de Deus."],
+      [32,"Porque João veio a vós no caminho da justiça, e não o crestes, mas os publicanos e as meretrizes o creram; vós, porém, vendo isso, nem depois vos arrependestes para o crer."]
+    ]},
+    "2026-09-28": { ref:"Lucas 9,46-50", theme:"Quem não é contra nós é por nós", icon:"cross", color:"green", reflection:"A grandeza no Reino de Deus se mede pelo serviço, não pelo destaque. Que eu acolha os pequenos gestos de hoje como o lugar onde Deus quer me encontrar.", verses:[
+      [46,"E suscitou-se entre eles uma questão, sobre qual deles seria o maior."],
+      [47,"Mas, vendo Jesus o pensamento de seu coração, tomou uma criança, pô-la junto a si,"],
+      [48,"E disse-lhes: Qualquer que receber esta criança em meu nome, a mim me recebe; e qualquer que me receber a mim, recebe aquele que me enviou; porque aquele que entre todos vós for o menor, esse será grande."],
+      [49,"E, respondendo João, disse: Mestre, vimos um que em teu nome expulsava os demônios, e o proibimos, porque não te segue conosco."],
+      [50,"Disse-lhe Jesus: Não o proibais, porque quem não é contra nós é por nós."]
+    ]},
+    "2026-09-29": { ref:"João 1,47-51", theme:"São Miguel, São Gabriel e São Rafael, arcanjos", icon:"marian", color:"white", reflection:"Os anjos nos lembram que o céu está mais perto do que imaginamos. Que eu viva hoje atento aos sinais discretos da presença de Deus ao meu redor.", verses:[
+      [47,"Jesus viu Natanael, que vinha para ele, e disse dele: Eis aqui um verdadeiro israelita, em quem não há dolo."],
+      [48,"Disse-lhe Natanael: Donde me conheces? Jesus respondeu, e disse-lhe: Antes que Filipe te chamasse, te vi eu, estando tu debaixo da figueira."],
+      [49,"Natanael respondeu, e disse-lhe: Rabi, tu és o Filho de Deus, tu és o Rei de Israel."],
+      [50,"Jesus respondeu, e disse-lhe: Porque te disse: Vi-te debaixo da figueira, crês? Coisas maiores do que estas verás."],
+      [51,"E disse-lhe: Na verdade, na verdade vos digo que daqui em diante vereis o céu aberto, e os anjos de Deus subindo e descendo sobre o Filho do homem."]
+    ]},
+    "2026-09-30": { ref:"Lucas 9,57-62", theme:"São Jerônimo — o custo de seguir a Jesus", icon:"bishop", color:"white", reflection:"Seguir Jesus pede disposição para não olhar constantemente para trás. Que eu tenha a liberdade interior de avançar, mesmo sem todas as garantias que eu gostaria de ter.", verses:[
+      [57,"E aconteceu que, indo eles pelo caminho, um lhe disse: Senhor, seguir-te-ei para onde quer que fores."],
+      [58,"E disse-lhe Jesus: As raposas têm covis, e as aves do céu ninhos; mas o Filho do homem não tem onde reclinar a cabeça."],
+      [59,"E disse a outro: Segue-me. E ele disse: Senhor, deixa-me ir primeiro sepultar meu pai."],
+      [60,"Mas Jesus lhe disse: Deixa aos mortos sepultar os seus mortos; tu, porém, vai, e anuncia o Reino de Deus."],
+      [61,"E outro disse também: Seguir-te-ei, Senhor; mas deixa-me despedir-me primeiro dos que estão em minha casa."],
+      [62,"E disse-lhe Jesus: Nenhum que lança mão do arado, e olha para trás, é apto para o Reino de Deus."]
+    ]},
+"2026-10-01": { ref:"Lucas 10,1-12", theme:"Santa Teresinha — o envio dos setenta e dois", icon:"apostle", color:"white", reflection:"Teresinha nunca saiu do convento, mas tornou-se padroeira das missões pela oração e pelo amor escondido. Que eu também ofereça hoje minha parte na grande seara, mesmo que pareça pequena.", verses:[[1,"E depois designou o Senhor ainda outros setenta e dois, e enviou-os adiante da sua face, de dois em dois, a todas as cidades e lugares aonde ele havia de ir."],[2,"E dizia-lhes: Grande é em verdade a seara, mas os trabalhadores são poucos; rogai, pois, ao Senhor da seara que mande trabalhadores para a sua seara."],[3,"Ide; eis que vos envio como cordeiros ao meio de lobos."],[4,"Não leveis bolsa, nem alforje, nem alparcas, e a ninguém saudeis pelo caminho."],[5,"E em qualquer casa em que entrardes, dizei primeiro: Paz seja nesta casa."],[6,"E, se ali houver algum filho de paz, repousará sobre ele a vossa paz; e, se não, voltará para vós."],[7,"E ficai na mesma casa, comendo e bebendo do que eles tiverem; pois digno é o trabalhador do seu salário. Não andeis de casa em casa."],[8,"E em qualquer cidade em que entrardes, e vos receberem, comei do que vos puserem diante;"],[9,"E curai os enfermos que houver nela, e dizei-lhes: É chegado a vós o Reino de Deus."],[10,"Mas em qualquer cidade em que entrardes, e vos não receberem, saindo pelas ruas, dizei:"],[11,"Até o pó da vossa cidade, que se nos pegou, sacudimos contra vós; sabei, contudo, que o Reino de Deus é chegado a vós."],[12,"E digo-vos que naquele dia haverá menos rigor para Sodoma do que para aquela cidade."]
+  ]},
+"2026-10-02": { ref:"Mateus 18,1-5.10", theme:"Os Santos Anjos da Guarda — tornar-se como uma criança", icon:"marian", color:"white", reflection:"Deus não nos deixa sozinhos no caminho — confia a cada um de nós um anjo que vela por nós, como vela por cada pequenino. Que eu viva hoje com essa confiança simples de criança.", verses:[[1,"Naquela mesma hora chegaram os discípulos junto de Jesus, dizendo: Quem é, porventura, o maior no Reino dos céus?"],[2,"E Jesus, chamando uma criança, a pôs no meio deles,"],[3,"E disse: Em verdade vos digo que, se não vos converterdes, e não vos fizerdes como crianças, de modo nenhum entrareis no Reino dos céus."],[4,"Portanto, qualquer que se fizer humilde como esta criança, esse é o maior no Reino dos céus."],[5,"E qualquer que receber em meu nome uma criança tal como esta, a mim me recebe."],[10,"Vede não desprezeis algum destes pequeninos, porque eu vos digo que os seus anjos nos céus sempre veem a face de meu Pai, que está nos céus."]
+  ]},
+"2026-10-03": { ref:"Lucas 10,17-24", theme:"O regresso dos setenta e dois, com alegria", icon:"cross", color:"green", reflection:"A alegria verdadeira não está nos nossos sucessos, mas em pertencer a Deus. Que minha alegria hoje venha de saber que sou conhecido e amado por Ele, não só do que consigo realizar.", verses:[[17,"E voltaram os setenta e dois com alegria, dizendo: Senhor, até os demônios se nos sujeitam em teu nome."],[18,"E disse-lhes: Eu via Satanás, como raio, cair do céu."],[19,"Eis que vos dou poder para pisar serpentes e escorpiões, e toda a força do inimigo, e nada vos fará dano algum."],[20,"Mas não vos alegreis por se vos sujeitarem os espíritos; antes, alegrai-vos por estarem os vossos nomes escritos nos céus."],[21,"Naquela mesma hora Jesus se alegrou em espírito, e disse: Graças te dou, Pai, Senhor do céu e da terra, que escondeste estas coisas aos sábios e entendidos, e as revelaste aos pequeninos; sim, Pai, porque assim te aprouve."],[22,"Todas as coisas me foram entregues por meu Pai; e ninguém conhece quem é o Filho senão o Pai, nem quem é o Pai senão o Filho, e aquele a quem o Filho o quiser revelar."],[23,"E, voltando-se para os discípulos, disse-lhes à parte: Bem-aventurados os olhos que veem o que vós vedes."],[24,"Porque eu vos digo que muitos profetas e reis desejaram ver o que vós vedes, e não o viram; e ouvir o que vós ouvis, e não o ouviram."]
+  ]},
+"2026-10-04": { ref:"Mateus 21,33-43", theme:"A parábola dos lavradores maus — 27º Domingo do Tempo Comum", icon:"cross", color:"green", reflection:"Deus continua confiando sua vinha a nós, mesmo quando falhamos em dar fruto. Que eu responda hoje com gratidão, e não com a dureza dos lavradores da parábola.", verses:[[33,"Ouvi outra parábola: Havia um homem, pai de família, que plantou uma vinha, e circundou-a com uma sebe, e cavou nela um lagar, e edificou uma torre, e arrendou-a uns lavradores, e ausentou-se para longe."],[34,"E, chegando o tempo dos frutos, enviou os seus servos aos lavradores, para receberem os frutos dela."],[35,"E os lavradores, apoderando-se dos servos, feriram um, mataram outro, e apedrejaram outro."],[36,"Depois enviou ainda outros servos, em maior número do que os primeiros; e fizeram-lhes o mesmo."],[37,"E, por último, enviou-lhes seu filho, dizendo: Terão respeito a meu filho."],[38,"Mas os lavradores, vendo o filho, disseram entre si: Este é o herdeiro; vinde, matemo-lo, e apoderemo-nos da sua herança."],[39,"E, pegando dele, o lançaram fora da vinha, e o mataram."],[40,"Quando, pois, vier o senhor da vinha, que fará àqueles lavradores?"],[41,"Disseram-lhe eles: Fará perecer miseravelmente a estes maus, e arrendará a vinha a outros lavradores, que a seu tempo lhe deem os frutos."],[42,"Disse-lhes Jesus: Nunca lestes nas Escrituras: A pedra que os edificadores rejeitaram, essa foi feita cabeça de esquina; pelo Senhor foi feito isto, e é maravilhoso aos nossos olhos?"],[43,"Portanto eu vos digo que o Reino de Deus vos será tirado, e será dado a uma nação que dê os seus frutos."]
+  ]},
+"2026-10-05": { ref:"Lucas 10,25-37", theme:"O bom samaritano", icon:"cross", color:"green", reflection:"Ser próximo é uma escolha, não uma coincidência de caminho. Hoje posso escolher parar diante de alguém que normalmente eu deixaria passar direto.", verses:[[25,"E eis que se levantou um certo doutor da lei, tentando-o, e dizendo: Mestre, que farei para herdar a vida eterna?"],[26,"E ele lhe disse: Que está escrito na lei? Como lês?"],[27,"E, respondendo ele, disse: Amarás ao Senhor teu Deus de todo o teu coração, e de toda a tua alma, e de todas as tuas forças, e de todo o teu entendimento, e ao teu próximo como a ti mesmo."],[28,"E disse-lhe: Respondeste bem; faze isso, e viverás."],[29,"Ele, porém, querendo justificar-se a si mesmo, disse a Jesus: E quem é o meu próximo?"],[30,"E, respondendo Jesus, disse: Descia um homem de Jerusalém para Jericó, e caiu nas mãos dos salteadores, os quais o despojaram e, espancando-o, se retiraram, deixando-o meio morto."],[31,"E, ocasionalmente, descia pelo mesmo caminho um sacerdote, e, vendo-o, passou de largo."],[32,"E de igual modo um levita chegou também àquele lugar, e vendo-o, passou de largo."],[33,"Mas um samaritano, que ia de viagem, chegou perto dele e, vendo-o, moveu-se de íntima compaixão."],[34,"E, aproximando-se, atou-lhe as feridas, aplicando-lhes azeite e vinho; e, pondo-o sobre a sua cavalgadura, levou-o para uma estalagem, e cuidou dele."],[35,"E, partindo ao outro dia, tirou dois dinheiros, e deu-os ao hospedeiro, e disse-lhe: Cuida dele; e tudo o que gastares a mais, eu, quando voltar, to pagarei."],[36,"Qual, pois, destes três te parece que foi o próximo daquele que caiu nas mãos dos salteadores?"],[37,"E ele disse: O que usou de misericórdia para com ele. Disse-lhe, pois, Jesus: Vai, e faze tu o mesmo."]
+  ]},
+"2026-10-06": { ref:"Lucas 10,38-42", theme:"Marta e Maria — a melhor parte", icon:"virgin", color:"green", reflection:"Nem tudo que é urgente é o mais importante. Que eu reserve hoje um tempo verdadeiro para simplesmente escutar o Senhor, como Maria.", verses:[[38,"E aconteceu que, indo eles de caminho, entrou numa aldeia; e uma mulher, chamada Marta, o recebeu em sua casa."],[39,"E tinha esta uma irmã, chamada Maria, a qual, assentando-se também aos pés de Jesus, ouvia a sua palavra."],[40,"Marta, porém, andava distraída em muitos serviços; e, chegando-se a ele, disse: Senhor, não se te dá que minha irmã me deixe servir só? Dize-lhe, pois, que me ajude."],[41,"E, respondendo Jesus, disse-lhe: Marta, Marta, estás ansiosa e perturbada com muitas coisas;"],[42,"Mas uma só é necessária; e Maria escolheu a boa parte, a qual não lhe será tirada."]
+  ]},
+"2026-10-07": { ref:"Lucas 1,26-38", theme:"Nossa Senhora do Rosário — a Anunciação", icon:"marian", color:"white", reflection:"Como Maria, posso responder a Deus com um sim mesmo sem entender tudo o que Ele está pedindo. Que o Rosário de hoje seja um tempo de confiança, não só de repetição.", verses:[[26,"E, no sexto mês, foi o anjo Gabriel enviado por Deus a uma cidade da Galileia, chamada Nazaré,"],[27,"A uma virgem desposada com um varão, cujo nome era José, da casa de Davi; e o nome da virgem era Maria."],[28,"E, entrando o anjo onde ela estava, disse: Salve, agraciada; o Senhor é contigo; bendita és tu entre as mulheres."],[29,"E, vendo-o ela, turbou-se muito das suas palavras, e considerava que saudação seria esta."],[30,"Disse-lhe então o anjo: Maria, não temas, porque achaste graça diante de Deus."],[31,"E eis que em teu ventre conceberás, e darás à luz um filho, e pôr-lhe-ás o nome de Jesus."],[32,"Este será grande, e será chamado Filho do Altíssimo; e o Senhor Deus lhe dará o trono de Davi, seu pai;"],[33,"E reinará eternamente na casa de Jacó, e o seu reino não terá fim."],[34,"E Maria disse ao anjo: Como se fará isso, visto que não conheço varão?"],[35,"E, respondendo o anjo, disse-lhe: Descerá sobre ti o Espírito Santo, e a virtude do Altíssimo te cobrirá com a sua sombra; pelo que também o Santo, que de ti há de nascer, será chamado Filho de Deus."],[36,"E eis que também Isabel, tua prima, concebeu um filho em sua velhice; e é este já o sexto mês para aquela que era chamada estéril;"],[37,"Porque para Deus nada é impossível."],[38,"Disse então Maria: Eis aqui a serva do Senhor; cumpra-se em mim segundo a tua palavra. E o anjo ausentou-se dela."]
+  ]},
+"2026-10-08": { ref:"Lucas 11,5-13", theme:"Pedi, e dar-se-vos-á", icon:"cross", color:"green", reflection:"Deus não se cansa de ser procurado com insistência. Que eu leve a Ele hoje, sem vergonha, o que mais preciso pedir.", verses:[[5,"E disse-lhes: Qual de vós terá um amigo, e for procurá-lo à meia-noite, e lhe disser: Amigo, empresta-me três pães,"],[6,"Pois um amigo meu, de viagem, chegou a minha casa, e não tenho o que lhe apresentar;"],[7,"E se ele, de dentro, respondendo, disser: Não me incomodes; já está a porta fechada, e os meus filhos estão comigo na cama; não posso levantar-me e dar-tos?"],[8,"Digo-vos que, ainda que, levantando-se, lhos não desse, por ser seu amigo, todavia, pela sua importunação, se levantará e lhe dará tudo o que houver mister."],[9,"E eu vos digo: Pedi, e dar-se-vos-á; buscai, e encontrareis; batei, e abrir-se-vos-á."],[10,"Porque qualquer que pede, recebe; e quem busca, encontra; e a quem bate, abrir-se-lhe-á."],[11,"E qual é o pai de entre vós que, se o filho lhe pedir pão, lhe dará uma pedra? Ou, se lhe pedir peixe, lhe dará por peixe uma serpente?"],[12,"Ou, se lhe pedir um ovo, lhe dará um escorpião?"],[13,"Pois se vós, sendo maus, sabeis dar boas dádivas aos vossos filhos, quanto mais vosso Pai celestial dará o Espírito Santo àqueles que lho pedirem?"]
+  ]},
+"2026-10-09": { ref:"Lucas 11,15-26", theme:"Jesus e Belzebu — uma casa dividida", icon:"cross", color:"green", reflection:"Uma casa dividida não pode ficar de pé — nem por fora, nem por dentro de mim. Que eu busque hoje unidade entre o que creio e como vivo.", verses:[[15,"Mas alguns deles diziam: Ele expulsa os demônios por Belzebu, príncipe dos demônios."],[16,"E outros, tentando-o, pediam-lhe um sinal do céu."],[17,"Mas ele, conhecendo os seus pensamentos, disse-lhes: Todo o reino dividido contra si mesmo é assolado, e toda a casa dividida contra si mesma cai."],[18,"Ora, se Satanás está também dividido contra si mesmo, como subsistirá o seu reino? Pois dizeis que eu expulso os demônios por Belzebu."],[19,"E, se eu expulso os demônios por Belzebu, por quem os expulsam os vossos filhos? Por isso eles mesmos serão os vossos juízes."],[20,"Mas, se eu expulso os demônios pelo dedo de Deus, logo chegado é a vós o Reino de Deus."],[21,"Quando o valente guarda armado a sua casa, em segurança está tudo o que ele tem."],[22,"Mas, sobrevindo outro mais valente do que ele, e vencendo-o, tira-lhe toda a sua armadura em que confiava, e reparte os seus despojos."],[23,"Quem não é comigo é contra mim; e quem comigo não ajunta, espalha."],[24,"Quando o espírito imundo tem saído do homem, anda por lugares secos, buscando repouso; e, não o achando, diz: Voltarei para minha casa, donde saí."],[25,"E, chegando, acha-a varrida e adornada."],[26,"Então vai, e leva consigo outros sete espíritos piores do que ele, e, entrando, habitam ali; e o último estado desse homem vem a ser pior que o primeiro."]
+  ]},
+"2026-10-10": { ref:"Lucas 11,27-28", theme:"Bem-aventurados os que ouvem a Palavra de Deus", icon:"marian", color:"green", reflection:"Mais importante que admirar Maria à distância é fazer o que ela fez: guardar e viver a Palavra. Que eu não seja só ouvinte, mas praticante hoje.", verses:[[27,"E aconteceu que, dizendo ele isto, uma mulher dentre a multidão, levantando a voz, lhe disse: Bem-aventurado o ventre que te trouxe, e os peitos em que mamaste."],[28,"Mas ele disse: Antes bem-aventurados os que ouvem a palavra de Deus, e a guardam."]
+  ]},
+"2026-10-11": { ref:"Mateus 22,1-14", theme:"A parábola das bodas — 28º Domingo do Tempo Comum", icon:"cross", color:"green", reflection:"Todos são convidados ao banquete do Reino — a pergunta é se eu compareço de coração disposto, ou só de corpo presente. Como estou hoje?", verses:[[1,"E, respondendo Jesus, tornou a falar-lhes por parábolas, dizendo:"],[2,"O Reino dos céus é semelhante a um certo rei que celebrou as bodas de seu filho,"],[3,"E enviou os seus servos a chamar os convidados para as bodas, e estes não quiseram vir."],[4,"Enviou ainda outros servos, dizendo: Dizei aos convidados: Eis que tenho o meu jantar preparado, os meus bois e cevados já mortos, e tudo já pronto; vinde às bodas."],[5,"Eles, porém, não fazendo caso, foram, um para o seu campo, outro para o seu trato;"],[6,"E os outros, apoderando-se dos servos, os ultrajaram e mataram."],[7,"E o rei, tendo notícia disto, encolerizou-se, e, enviando os seus exércitos, destruiu aqueles homicidas, e incendiou a sua cidade."],[8,"Então disse aos seus servos: As bodas, na verdade, estão preparadas, mas os convidados não eram dignos."],[9,"Ide, pois, pelas saídas dos caminhos, e convidai para as bodas a todos os que encontrardes."],[10,"E, saindo os servos pelos caminhos, ajuntaram todos quantos encontraram, tanto maus como bons; e a sala nupcial ficou cheia de convidados."],[11,"E, entrando o rei para ver os convidados, viu ali um homem que não estava trajado com veste nupcial."],[12,"E disse-lhe: Amigo, como entraste aqui, sem teres veste nupcial? E ele emudeceu."],[13,"Disse então o rei aos servos: Amarrai-o de pés e mãos, levai-o, e lançai-o nas trevas exteriores; ali haverá pranto e ranger de dentes."],[14,"Porque muitos são chamados, mas poucos escolhidos."]
+  ]},
+"2026-10-12": { ref:"João 2,1-11", theme:"Nossa Senhora Aparecida — as bodas de Caná", icon:"marian", color:"white", reflection:"'Fazei tudo o que Ele vos disser' é o único conselho que Maria nos dá nos Evangelhos, e ainda vale hoje. Onde minha vida está pedindo essa obediência confiante?", verses:[[1,"E, três dias depois, fizeram-se umas bodas em Caná da Galileia; e estava ali a mãe de Jesus."],[2,"E Jesus convidado também, e os seus discípulos, para as bodas."],[3,"E, faltando o vinho, a mãe de Jesus lhe disse: Não têm vinho."],[4,"Disse-lhe Jesus: Mulher, que tenho eu contigo? Ainda não é chegada a minha hora."],[5,"Sua mãe disse aos serventes: Fazei tudo quanto ele vos disser."],[6,"E estavam ali postas seis talhas de pedra, para as purificações dos judeus, e em cada uma cabiam dois ou três almudes."],[7,"Disse-lhes Jesus: Enchei de água essas talhas. E encheram-nas até cima."],[8,"E disse-lhes: Tirai agora, e levai ao mestre-sala. E levaram."],[9,"E, logo que o mestre-sala provou a água feita vinho, não sabendo donde viera, se bem que o sabiam os serventes que tinham tirado a água, chamou o mestre-sala o noivo,"],[10,"E disse-lhe: Todo homem põe primeiro o vinho bom e, quando já têm bebido bem, então o inferior; mas tu guardaste até agora o bom vinho."],[11,"Jesus principiou assim os seus sinais em Caná da Galileia, e manifestou a sua glória; e os seus discípulos creram nele."]
+  ]},
+"2026-10-13": { ref:"Lucas 11,37-41", theme:"Limpar o interior, não só o exterior", icon:"cross", color:"green", reflection:"É fácil cuidar da aparência e esquecer do coração. Que eu examine hoje o que realmente está por dentro, não só o que os outros veem.", verses:[[37,"E, estando ele ainda falando, rogou-lhe um fariseu que fosse jantar com ele; e, entrando, assentou-se à mesa."],[38,"E o fariseu admirou-se, vendo que não se tinha lavado antes de jantar."],[39,"Disse-lhe, porém, o Senhor: Vós, fariseus, limpais o exterior do copo e do prato; mas o vosso interior está cheio de rapina e malícia."],[40,"Loucos! Aquele que fez o exterior não fez também o interior?"],[41,"Dai, porém, de esmola o que tiverdes, e eis que todas as coisas vos serão limpas."]
+  ]},
+"2026-10-14": { ref:"Lucas 11,42-46", theme:"Ai de vós que negligenciais a justiça e o amor de Deus", icon:"cross", color:"green", reflection:"Cumprir regras sem amor é uma religião vazia. Que minhas práticas de fé hoje nasçam de amor, e não só de obrigação.", verses:[[42,"Mas ai de vós, fariseus, que dizimais a hortelã, e a arruda, e toda a hortaliça, e desprezais a justiça e o amor de Deus; ora, estas coisas importava fazer, e não deixar as outras."],[43,"Ai de vós, fariseus, que amais os primeiros assentos nas sinagogas, e as saudações nas praças."],[44,"Ai de vós, escribas e fariseus, hipócritas, que sois como as sepulturas que não aparecem, sobre as quais andam os homens, e não o sabem."],[45,"E, respondendo um dos doutores da lei, disse-lhe: Mestre, quando dizes isso, também nos afrontas a nós."],[46,"E ele disse: Ai de vós também, doutores da lei, que carregais os homens com cargas insuportáveis, e vós mesmos nem ainda com um dos vossos dedos tocais nessas cargas."]
+  ]},
+"2026-10-15": { ref:"Lucas 11,47-54", theme:"Santa Teresa de Jesus — a chave da ciência", icon:"bishop", color:"white", reflection:"Conhecer sobre Deus não é o mesmo que conhecer a Deus. Como Santa Teresa de Ávila, que eu busque hoje uma fé que se encontra com Ele de verdade, não só informações sobre Ele.", verses:[[47,"Ai de vós, que edificais os sepulcros dos profetas, e vossos pais os mataram."],[48,"Dando assim testemunho, e consentindo nas obras de vossos pais; porque eles, na verdade, os mataram, e vós edificais os seus sepulcros."],[49,"Por isso diz também a sabedoria de Deus: Profetas e apóstolos lhes mandarei; e matarão uns, e perseguirão outros;"],[50,"Para que a esta geração se peça conta do sangue de todos os profetas, que foi derramado desde a fundação do mundo;"],[51,"Desde o sangue de Abel até ao sangue de Zacarias, que foi morto entre o altar e o templo; sim, vos digo, que a esta geração será pedida conta."],[52,"Ai de vós, doutores da lei, que tirastes a chave da ciência; vós mesmos não entrastes, e impedistes os que entravam."],[53,"E, dizendo-lhes ele isto, os escribas e fariseus começaram a apertá-lo fortemente, e a fazê-lo falar sobre muitas coisas;"],[54,"Armando-lhe ciladas, e procurando apanhar alguma coisa da sua boca, para o acusarem."]
+  ]},
+"2026-10-16": { ref:"Lucas 12,1-7", theme:"Não temais — valeis mais que muitos passarinhos", icon:"cross", color:"green", reflection:"Deus conta até os fios de cabelo da minha cabeça — nada em mim passa despercebido para Ele. Que esse cuidado acalme hoje meus medos.", verses:[[1,"Ajuntando-se entretanto muitos milhares de pessoas, de sorte que se atropelavam uns aos outros, começou a dizer aos seus discípulos, primeiramente: Guardai-vos do fermento dos fariseus, que é a hipocrisia."],[2,"Não há nada encoberto que não haja de ser descoberto, nem coisa secreta que não haja de ser sabida."],[3,"Porquanto tudo o que em trevas dissestes, à luz se ouvirá; e o que falastes ao ouvido no interior de casa, sobre os telhados se pregará."],[4,"E digo-vos, amigos meus: Não temais os que matam o corpo, e depois disso nada mais podem fazer."],[5,"Mas eu vos mostrarei a quem deveis temer: temei aquele que, depois de matar, tem poder para lançar no inferno; sim, vos digo, a esse temei."],[6,"Não se vendem cinco passarinhos por dois ceitis? E nenhum deles está esquecido diante de Deus."],[7,"E até os cabelos da vossa cabeça estão todos contados. Não temais, pois; mais valeis vós do que muitos passarinhos."]
+  ]},
+"2026-10-17": { ref:"Lucas 12,8-12", theme:"Santo Inácio de Antioquia — confessar-me diante dos homens", icon:"martyr", color:"red", reflection:"Santo Inácio de Antioquia foi ao martírio dizendo-se 'trigo de Deus'. Que eu tenha, em menor escala, a mesma coragem de não esconder minha fé diante dos outros.", verses:[[8,"E digo-vos que todo aquele que me confessar diante dos homens, também o Filho do homem o confessará diante dos anjos de Deus."],[9,"Mas quem me negar diante dos homens será negado diante dos anjos de Deus."],[10,"E a todo aquele que disser alguma palavra contra o Filho do homem, isso lhe será perdoado; mas ao que blasfemar contra o Espírito Santo, não lhe será perdoado."],[11,"E, quando vos levarem às sinagogas, e aos magistrados e potestades, não estejais solícitos de como, ou do que haveis de responder, nem do que haveis de dizer."],[12,"Porque na mesma hora vos ensinará o Espírito Santo o que necessário for dizer."]
+  ]},
+"2026-10-18": { ref:"Mateus 22,15-21", theme:"Dai a César o que é de César — 29º Domingo do Tempo Comum", icon:"cross", color:"green", reflection:"Tudo tem o selo de quem o criou — e eu trago gravada a imagem de Deus. A quem realmente pertenço nas escolhas de hoje?", verses:[[15,"Então os fariseus, retirando-se, consultaram entre si como o surpreenderiam em alguma palavra."],[16,"E enviaram-lhe os seus discípulos, com os herodianos, dizendo: Mestre, sabemos que és verdadeiro, e ensinas o caminho de Deus, segundo a verdade, e de ninguém se te dá, porque não olhas à aparência dos homens."],[17,"Dize-nos, pois, que te parece? É lícito pagar tributo a César, ou não?"],[18,"Mas Jesus, conhecendo a sua malícia, disse: Por que me experimentais, hipócritas?"],[19,"Mostrai-me a moeda do tributo. E eles lhe apresentaram um dinheiro."],[20,"E disse-lhes: De quem é esta efígie e esta inscrição?"],[21,"Disseram-lhe: De César. Então ele lhes disse: Dai, pois, a César o que é de César, e a Deus o que é de Deus."]
+  ]},
+"2026-10-19": { ref:"Lucas 12,13-21", theme:"O rico insensato", icon:"cross", color:"green", reflection:"Acumular sem Deus é construir celeiros que não vou levar comigo. Que eu invista hoje no que realmente permanece.", verses:[[13,"E disse-lhe um da multidão: Mestre, dize a meu irmão que reparta comigo a herança."],[14,"Mas ele lhe disse: Homem, quem me pôs a mim por juiz ou repartidor entre vós?"],[15,"E disse-lhes: Acautelai-vos, e guardai-vos da avareza; porque a vida de qualquer não consiste na abundância do que possui."],[16,"E disse-lhes uma parábola, dizendo: A herdade de um homem rico tinha produzido com abundância;"],[17,"E ele arrazoava consigo, dizendo: Que farei? Não tenho onde recolher os meus frutos."],[18,"E disse: Isto farei: derribarei os meus celeiros, e edificá-los-ei maiores, e ali recolherei todos os meus frutos e os meus bens;"],[19,"E direi à minha alma: Alma, tens em depósito muitos bens para muitos anos; descansa, come, bebe, folga."],[20,"Mas Deus lhe disse: Louco, esta noite te pedirão a tua alma; e o que tens preparado, para quem será?"],[21,"Assim é o que para si ajunta tesouros, e não é rico para com Deus."]
+  ]},
+"2026-10-20": { ref:"Lucas 12,35-38", theme:"Vigiai com as candeias acesas", icon:"cross", color:"green", reflection:"Deus pode chegar em qualquer momento, e o convite é simples: estar pronto. Que eu viva hoje de olhos abertos para Ele.", verses:[[35,"Estejam cingidos os vossos lombos, e acesas as vossas candeias."],[36,"E sede vós semelhantes aos homens que esperam a seu senhor, quando houver de voltar das bodas, para que, quando vier, e bater, logo possam abrir-lhe."],[37,"Bem-aventurados aqueles servos, aos quais o senhor, quando vier, achar vigiando! Em verdade vos digo que se cingirá, e os fará assentar à mesa, e, chegando-se, os servirá."],[38,"E, se vier na segunda vigília, e se vier na terceira vigília, e assim os achar, bem-aventurados são tais servos."]
+  ]},
+"2026-10-21": { ref:"Lucas 12,39-48", theme:"O servo fiel e prudente", icon:"cross", color:"green", reflection:"A fidelidade se mostra no que faço quando ninguém está vigiando. Que eu seja hoje o mesmo, visto ou não visto.", verses:[[39,"Sabei, porém, isto: que, se o pai de família soubesse a que hora havia de vir o ladrão, vigiaria e não deixaria minar a sua casa."],[40,"Também vós, pois, estai apercebidos; porque o Filho do homem virá à hora em que não penseis."],[41,"E disse-lhe Pedro: Senhor, dizes essa parábola para nós, ou também para todos?"],[42,"Disse o Senhor: Qual é, pois, o mordomo fiel e prudente, que o senhor porá sobre os seus servos, para a tempo lhes dar a ração?"],[43,"Bem-aventurado aquele servo que o senhor, quando vier, achar fazendo assim."],[44,"Em verdade vos digo que o porá sobre tudo o que tem."],[45,"Mas, se aquele servo disser em seu coração: O meu senhor tarda em vir; e começar a espancar os criados e criadas, e a comer, e beber, e a embriagar-se,"],[46,"Virá o senhor daquele servo num dia em que o não espera, e numa hora que não sabe, e separá-lo-á, e porá a sua parte com os infiéis."],[47,"E o servo que soube a vontade do seu senhor, e não se aprontou, nem fez conforme a sua vontade, será castigado com muitos açoites."],[48,"Mas o que não a soube, e fez coisas dignas de açoites, com poucos açoites será castigado; e a qualquer a quem muito foi dado, muito se lhe pedirá."]
+  ]},
+"2026-10-22": { ref:"Lucas 12,49-53", theme:"Vim lançar fogo sobre a terra", icon:"cross", color:"green", reflection:"Seguir a Cristo de verdade às vezes gera tensão, até dentro de casa. Que eu não troque a verdade por uma paz falsa.", verses:[[49,"Vim lançar fogo na terra; e que mais quero, se já está aceso?"],[50,"Importa que eu seja batizado com um batismo, e como me angustio até que se cumpra!"],[51,"Cuidais vós que vim dar paz à terra? Não, vos digo, antes dissensão."],[52,"Porque daqui em diante, cinco numa casa, estarão divididos três contra dois, e dois contra três."],[53,"O pai estará dividido contra o filho, e o filho contra o pai; a mãe contra a filha, e a filha contra a mãe."]
+  ]},
+"2026-10-23": { ref:"Lucas 12,54-59", theme:"Discernir os sinais dos tempos", icon:"cross", color:"green", reflection:"Sei ler o céu, mas às vezes não sei ler o que Deus está dizendo na minha própria vida. Que eu preste atenção hoje aos sinais que Ele me envia.", verses:[[54,"E dizia também à multidão: Quando vedes a nuvem levantar-se do ocidente, logo dizeis: Lá vem chuva; e assim sucede."],[55,"E, quando sopra o vento sul, dizeis: Haverá calor; e assim sucede."],[56,"Hipócritas, sabeis discernir a face do céu e da terra; e como não discernis este tempo?"],[57,"E por que não julgais também por vós mesmos o que é justo?"],[58,"Quando, pois, vais com o teu adversário ao magistrado, procura, ainda pelo caminho, livrar-te dele; para que não suceda que te leve ao juiz, e o juiz te entregue ao oficial, e o oficial te lance na prisão."],[59,"Digo-te que não sairás dali enquanto não pagares o derradeiro ceitil."]
+  ]},
+"2026-10-24": { ref:"Lucas 13,1-9", theme:"A figueira estéril — mais uma chance", icon:"cross", color:"green", reflection:"Deus é paciente comigo como o viticultor foi com a figueira. Que eu use bem o tempo extra que Ele me dá, em vez de desperdiçá-lo.", verses:[[1,"E, naquele mesmo tempo, estavam ali presentes alguns que lhe falavam dos galileus cujo sangue Pilatos misturara com os sacrifícios deles."],[2,"E, respondendo Jesus, disse-lhes: Cuidais vós que esses galileus foram mais pecadores do que todos os outros, por terem padecido tais coisas?"],[3,"Não, digo-vos; antes, se vos não arrependerdes, todos de igual modo perecereis."],[4,"Ou aqueles dezoito, sobre os quais caiu a torre de Siloé, e os matou, cuidais que foram mais culpados do que todos os homens que habitam em Jerusalém?"],[5,"Não, digo-vos; antes, se vos não arrependerdes, todos de igual modo perecereis."],[6,"E dizia esta parábola: Um homem tinha uma figueira plantada na sua vinha, e foi procurar nela fruto, e não o achou."],[7,"E disse ao viticultor: Eis que há três anos venho procurar fruto nesta figueira, e não o acho; corta-a; por que ocupa ela ainda a terra inutilmente?"],[8,"Mas, respondendo ele, disse-lhe: Senhor, deixa-a este ano ainda, até que eu a cave, e lhe ponha estrume;"],[9,"E, se der fruto, bem está; se não, depois a mandarás cortar."]
+  ]},
+"2026-10-25": { ref:"Mateus 22,34-40", theme:"O maior mandamento — 30º Domingo do Tempo Comum", icon:"cross", color:"green", reflection:"Tudo na fé se resume a amar a Deus e ao próximo — o resto é consequência. Hoje, qual desses dois amores preciso cultivar mais?", verses:[[34,"Os fariseus, porém, ouvindo que fizera calar os saduceus, se reuniram todos."],[35,"E um deles, doutor da lei, o interrogou para o experimentar, dizendo:"],[36,"Mestre, qual é o grande mandamento na lei?"],[37,"E Jesus disse-lhe: Amarás o Senhor teu Deus de todo o teu coração, e de toda a tua alma, e de todo o teu pensamento."],[38,"Este é o primeiro e grande mandamento."],[39,"E o segundo, semelhante a este, é: Amarás o teu próximo como a ti mesmo."],[40,"Destes dois mandamentos dependem toda a lei e os profetas."]
+  ]},
+"2026-10-26": { ref:"Lucas 13,10-17", theme:"A cura da mulher encurvada", icon:"cross", color:"green", reflection:"Havia dezoito anos que essa mulher vivia curvada — e Jesus a libertou num instante. Que área da minha vida ainda espera essa cura?", verses:[[10,"E ensinava, no sábado, numa das sinagogas."],[11,"E eis que estava ali uma mulher que tinha um espírito de enfermidade havia já dezoito anos; e andava curvada, e não podia de modo algum endireitar-se."],[12,"E, vendo-a Jesus, chamou-a a si, e disse-lhe: Mulher, estás livre da tua enfermidade."],[13,"E impôs as mãos sobre ela, e logo se endireitou, e glorificava a Deus."],[14,"E, tomando a palavra o príncipe da sinagoga, indignado porque Jesus curara no sábado, disse à multidão: Seis dias há em que é mister trabalhar; nesses, pois, vinde para serdes curados, e não no dia de sábado."],[15,"Respondeu-lhe, pois, o Senhor, e disse: Hipócrita, no sábado não desprende da manjedoura cada um de vós o seu boi ou jumento, e não o leva a beber?"],[16,"E não convinha soltar desta prisão, no dia de sábado, a esta filha de Abraão, a qual há dezoito anos Satanás tinha presa?"],[17,"E, dizendo ele isto, todos os seus adversários ficaram confundidos, e todo o povo se alegrava por todas as coisas gloriosas que eram feitas por ele."]
+  ]},
+"2026-10-27": { ref:"Lucas 13,18-21", theme:"O grão de mostarda e o fermento", icon:"cross", color:"green", reflection:"O Reino de Deus começa pequeno, quase invisível, mas não para de crescer. Que eu não desanime das pequenas sementes de bem que planto hoje.", verses:[[18,"E dizia: A que é semelhante o Reino de Deus, e a que o compararei?"],[19,"É semelhante ao grão de mostarda que um homem, tomando-o, lançou na sua horta; e cresceu, e fez-se grande árvore, e em seus ramos se aninharam as aves do céu."],[20,"E disse outra vez: A que compararei o Reino de Deus?"],[21,"É semelhante ao fermento que uma mulher, tomando-o, escondeu em três medidas de farinha, até que tudo levedou."]
+  ]},
+"2026-10-28": { ref:"Lucas 6,12-19", theme:"São Simão e São Judas Tadeu — a escolha dos Doze", icon:"apostle", color:"red", reflection:"Jesus passou a noite em oração antes de escolher os Doze — pessoas comuns, imperfeitas, para uma missão enorme. Que eu confie que Ele também pode usar alguém como eu.", verses:[[12,"E aconteceu, naqueles dias, que saiu ao monte a orar, e passou a noite orando a Deus."],[13,"E, quando já era dia, chamou a si os seus discípulos, e escolheu doze deles, a quem também chamou apóstolos:"],[14,"A Simão, a quem também chamou Pedro, e André seu irmão, Tiago e João, Filipe e Bartolomeu,"],[15,"Mateus e Tomé, Tiago, filho de Alfeu, e Simão, chamado Zelote,"],[16,"Judas, irmão de Tiago, e Judas Iscariotes, que foi o traidor."],[17,"E, descendo com eles, parou num lugar plano, e também um grande número de seus discípulos, e grande multidão do povo de toda a Judeia, e de Jerusalém, e da costa marítima de Tiro e de Sidom, os quais tinham vindo para o ouvir, e para serem curados das suas enfermidades,"],[18,"E os atormentados dos espíritos imundos; e eram curados."],[19,"E toda a multidão procurava tocar-lhe, porque saía dele virtude, e curava a todos."]
+  ]},
+"2026-10-29": { ref:"Lucas 13,31-35", theme:"Jerusalém, Jerusalém", icon:"cross", color:"green", reflection:"Deus insiste em nos reunir sob seu cuidado, como a galinha reúne os pintinhos, mesmo quando resistimos. Que eu não feche hoje o coração ao seu convite.", verses:[[31,"E, naquele mesmo dia, chegaram uns fariseus, dizendo-lhe: Sai, e retira-te daqui, porque Herodes quer matar-te."],[32,"E disse-lhes: Ide, e dizei àquela raposa: Eis que eu expulso demônios, e opero curas, hoje e amanhã, e no terceiro dia serei consumado."],[33,"Importa, contudo, caminhar hoje e amanhã, e no dia seguinte; porque não convém que um profeta morra fora de Jerusalém."],[34,"Jerusalém, Jerusalém, que matas os profetas, e apedrejas os que te são enviados! Quantas vezes quis eu ajuntar os teus filhos, como a galinha ajunta a sua ninhada debaixo das asas, e não quiseste!"],[35,"Eis que a vossa casa vos ficará deserta. E em verdade vos digo que não me vereis até que venha o tempo em que digais: Bendito aquele que vem em nome do Senhor."]
+  ]},
+"2026-10-30": { ref:"Lucas 14,1-6", theme:"A cura do hidrópico no sábado", icon:"cross", color:"green", reflection:"Fazer o bem nunca é contra a lei de Deus — é o cumprimento dela. Que eu não deixe regras travarem um gesto de cuidado que posso oferecer hoje.", verses:[[1,"E aconteceu que, entrando ele num sábado em casa de um dos principais dos fariseus para comer pão, eles o estavam observando."],[2,"E eis que estava diante dele um certo homem hidrópico."],[3,"E Jesus, tomando a palavra, falou aos doutores da lei, e aos fariseus, dizendo: É lícito curar no sábado?"],[4,"Eles, porém, calaram-se. E, tomando-o, o curou, e o despediu."],[5,"E, respondendo-lhes, disse: Qual de vós, se lhe cair um jumento ou um boi no poço, não o tirará logo, mesmo em dia de sábado?"],[6,"E nada lhe podiam replicar sobre isto."]
+  ]},
+"2026-10-31": { ref:"Lucas 14,1.7-11", theme:"Os primeiros lugares no banquete", icon:"cross", color:"green", reflection:"Quem se exalta será humilhado, e quem se humilha será exaltado. Que eu escolha hoje o lugar discreto, e deixe Deus decidir onde me colocar.", verses:[[1,"E aconteceu que, entrando ele num sábado em casa de um dos principais dos fariseus para comer pão, eles o estavam observando."],[7,"E disse aos convidados uma parábola, atentando como escolhiam os primeiros assentos, e dizendo-lhes:"],[8,"Quando por alguém fores convidado às bodas, não te assentes no primeiro lugar, não aconteça que esteja convidado outro mais honrado do que tu;"],[9,"E, vindo o que te convidou a ti e a ele, te diga: Dá o lugar a este; e então, com vergonha, tenhas de tomar o derradeiro lugar."],[10,"Mas, quando fores convidado, vai, e assenta-te no derradeiro lugar, para que, quando vier o que te convidou, te diga: Amigo, sobe mais para cima. Então terás honra diante dos que estiverem contigo à mesa."],[11,"Porque qualquer que a si mesmo se exaltar, será humilhado; e aquele que a si mesmo se humilhar, será exaltado."]
+  ]},
+  };
+
+  const blurb = customBlurb || templateBlurb(saintName, saintTitle);
+  const lit = liturgicalInfo(today);
+  const titleLower = saintTitle.toLowerCase();
+  const isMartyr = titleLower.includes('mártir');
+  if (isMartyr) { lit.color = 'var(--red)'; lit.seasonLabel = lit.seasonLabel + ' · vermelho (mártir)'; }
+
+  const COLOR_MAP = { green:'var(--green)', violet:'var(--violet)', white:'var(--white-gold)', red:'var(--red)' };
+  const isoToday = `${today.getFullYear()}-${mm}-${dd}`;
+  const gospelDataPre = GOSPELS[isoToday];
+  if (gospelDataPre && gospelDataPre.color && COLOR_MAP[gospelDataPre.color]){
+    lit.color = COLOR_MAP[gospelDataPre.color];
+  }
+
+  document.documentElement.style.setProperty('--season-color', lit.color);
+  document.getElementById('rubricText').textContent = lit.seasonLabel;
+  document.getElementById('dateHead').textContent = today.toLocaleDateString('pt-BR', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+  document.getElementById('verseText').textContent = `"${verse.text}"`;
+  document.getElementById('verseRef').textContent = verse.ref;
+  document.getElementById('saintName').textContent = saintName;
+  document.getElementById('saintTitle').textContent = saintTitle;
+  document.getElementById('saintBlurb').textContent = blurb;
+
+  // ---------- GOSPEL OF THE DAY ----------
+  // O evangelho litúrgico muda todo dia segundo um calendário oficial (ciclo de leituras
+  // de 2 anos para dias de semana + 3 anos para domingos). Reproduzir isso com precisão
+  // para todos os dias exigiria uma fonte ao vivo — por isso aqui vai um registro por
+  // data exata (AAAA-MM-DD), começado com o dia de hoje, e um link sempre atualizado
+  // para os demais dias. Dá pra ir completando este objeto dia a dia nas próximas versões.
+
+
+  const gospelData = GOSPELS[isoToday];
+
+  const ICONS = {
+    martyr: `<svg viewBox="0 0 64 64" fill="none" stroke="var(--gold)" stroke-width="1.4"><path d="M32 6 L32 46" stroke-linecap="round"/><path d="M32 10 C22 14 16 22 16 32 C16 22 24 18 32 22 C40 18 48 22 48 32 C48 22 42 14 32 10 Z" stroke-linejoin="round"/><circle cx="32" cy="50" r="8" stroke-width="1.2"/><path d="M32 46 L32 42" stroke-linecap="round"/></svg>`,
+    bishop: `<svg viewBox="0 0 64 64" fill="none" stroke="var(--gold)" stroke-width="1.4"><rect x="18" y="20" width="28" height="24" rx="1.5"/><path d="M18 27 L46 27 M32 20 L32 44" stroke-width="1"/><path d="M22 14 C22 9 42 9 42 14 L42 20 L22 20 Z"/><path d="M32 44 L32 52" stroke-linecap="round"/></svg>`,
+    apostle: `<svg viewBox="0 0 64 64" fill="none" stroke="var(--gold)" stroke-width="1.4"><path d="M10 40 Q32 52 54 40 L50 30 Q32 40 14 30 Z" stroke-linejoin="round"/><path d="M32 30 L32 10" stroke-linecap="round"/><path d="M32 10 L40 16 M32 10 L24 16" stroke-linecap="round"/></svg>`,
+    virgin: `<svg viewBox="0 0 64 64" fill="none" stroke="var(--gold)" stroke-width="1.4"><path d="M32 46 C20 40 16 28 22 18 C26 24 32 26 32 34 C32 26 38 24 42 18 C48 28 44 40 32 46 Z" stroke-linejoin="round" stroke-linecap="round"/><path d="M32 46 L32 54" stroke-linecap="round"/></svg>`,
+    royal: `<svg viewBox="0 0 64 64" fill="none" stroke="var(--gold)" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M14 40 L18 22 L27 32 L32 18 L37 32 L46 22 L50 40 Z"/><path d="M14 40 L50 40 L50 46 L14 46 Z"/></svg>`,
+    religious: `<svg viewBox="0 0 64 64" fill="none" stroke="var(--gold)" stroke-width="1.4"><path d="M24 46 L24 30 Q24 22 32 22 Q40 22 40 30 L40 46 Z" stroke-linejoin="round"/><path d="M18 46 L46 46" stroke-linecap="round"/><path d="M32 22 L32 10" stroke-linecap="round"/><ellipse cx="32" cy="9" rx="4" ry="3"/></svg>`,
+    marian: `<svg viewBox="0 0 64 64" fill="none" stroke="var(--gold)" stroke-width="1.4" stroke-linejoin="round"><path d="M32 8 L37 26 L56 26 L41 37 L46 55 L32 44 L18 55 L23 37 L8 26 L27 26 Z"/></svg>`,
+    cross: `<svg viewBox="0 0 64 64" fill="none" stroke="var(--gold)" stroke-width="1.4" stroke-linecap="round"><path d="M32 8 L32 56 M18 22 L46 22"/><path d="M8 34 Q32 20 56 34" stroke-width="1"/></svg>`
+  };
+  function iconFor(title){
+    const t = (title||'').toLowerCase();
+    if (t.includes('mártir')) return ICONS.martyr;
+    if (t.includes('bispo') || t.includes('doutor')) return ICONS.bishop;
+    if (t.includes('apóstolo') || t.includes('evangelista')) return ICONS.apostle;
+    if (t.includes('virgem')) return ICONS.virgin;
+    if (t.includes('rei') || t.includes('rainha') || t.includes('imperatriz') || t.includes('princesa') || t.includes('príncipe')) return ICONS.royal;
+    if (t.includes('religios') || t.includes('monge') || t.includes('abade') || t.includes('fundador') || t.includes('fundadora') || t.includes('eremita')) return ICONS.religious;
+    if (t.includes('mariano') || t.includes('nossa senhora') || t.includes('aparição') || t.includes('solenidade')) return ICONS.marian;
+    return ICONS.cross;
+  }
+
+  document.getElementById('gospelIcon').innerHTML = iconFor(gospelData ? gospelData.theme + ' ' + saintTitle : saintTitle);
+
+  if (gospelData){
+    document.getElementById('gospelRef').textContent = 'Proclamação do Evangelho segundo ' + gospelData.ref.split(' ')[0] + ', ' + gospelData.ref.split(' ').slice(1).join(' ');
+    document.getElementById('gospelTheme').textContent = gospelData.theme;
+    const versesHtml = gospelData.verses.map(([n,txt]) =>
+      `<span class="vnum">${n}</span> ${txt}`
+    ).join(' ');
+    document.getElementById('gospelSummary').innerHTML = versesHtml;
+    document.getElementById('gospelReflection').textContent = gospelData.reflection || '';
+  } else {
+    document.getElementById('gospelRef').textContent = 'Evangelho de hoje';
+    document.getElementById('gospelTheme').textContent = saintTitle.charAt(0).toUpperCase()+saintTitle.slice(1);
+    document.getElementById('gospelSummary').textContent = 'O texto completo do Evangelho de hoje ainda não está registrado neste aplicativo — isso chega numa próxima atualização.';
+    document.getElementById('gospelReflection').textContent = 'Mesmo sem o texto completo hoje, vale parar um instante: que Palavra Deus quer te dizer neste dia?';
+  }
+
+  // ---------- FAVORITES ----------
+  const favBtn = document.getElementById('favBtn');
+  const showFavsBtn = document.getElementById('showFavsBtn');
+  const favPanel = document.getElementById('favPanel');
+  const favKey = `fav:${verse.ref}`;
+
+  async function refreshFavButton(){
+    const saved = await safeGet(favKey);
+    if(saved){ favBtn.textContent='♥ Guardado'; favBtn.classList.add('active'); }
+    else { favBtn.textContent='♡ Guardar este versículo'; favBtn.classList.remove('active'); }
+  }
+  refreshFavButton();
+
+  favBtn.addEventListener('click', async ()=>{
+    const saved = await safeGet(favKey);
+    if(saved){
+      try{ await window.storage.delete(favKey); }catch(e){}
+    } else {
+      await safeSet(favKey, JSON.stringify({ref:verse.ref, text:verse.text}));
+    }
+    refreshFavButton();
+  });
+
+  async function loadFavorites(){
+    favPanel.innerHTML = '<p class="empty">Carregando…</p>';
+    try{
+      const listResult = await window.storage.list('fav:');
+      const keys = (listResult && listResult.keys) || [];
+      if(keys.length===0){
+        favPanel.innerHTML = '<p class="empty">Você ainda não guardou nenhum versículo.</p>';
+        return;
+      }
+      let html='';
+      for(const k of keys){
+        try{
+          const r = await window.storage.get(k);
+          if(r && r.value){
+            const v = JSON.parse(r.value);
+            html += `<div class="fav-item">"${v.text}"<span class="ref">${v.ref}</span></div>`;
+          }
+        }catch(e){}
+      }
+      favPanel.innerHTML = html || '<p class="empty">Você ainda não guardou nenhum versículo.</p>';
+    }catch(e){
+      favPanel.innerHTML = '<p class="empty">Não foi possível carregar os versículos guardados.</p>';
+    }
+  }
+
+  let favsOpen = false;
+  showFavsBtn.addEventListener('click', async ()=>{
+    favsOpen = !favsOpen;
+    favPanel.classList.toggle('open', favsOpen);
+    showFavsBtn.textContent = favsOpen ? 'Ocultar guardados' : 'Ver guardados';
+    if(favsOpen) await loadFavorites();
+  });
+
+  // ---------- STREAK ----------
+  (async function streak(){
+    const todayStr = today.toISOString().slice(0,10);
+    const last = await safeGet('streak:last');
+    const countRaw = await safeGet('streak:count');
+    let count = countRaw ? parseInt(countRaw,10) : 0;
+    if(last === todayStr){
+      // already counted today
+    } else {
+      const yesterday = new Date(today); yesterday.setDate(yesterday.getDate()-1);
+      const yStr = yesterday.toISOString().slice(0,10);
+      count = (last === yStr) ? count+1 : 1;
+      await safeSet('streak:last', todayStr);
+      await safeSet('streak:count', String(count));
+    }
+    const box = document.getElementById('streakBox');
+    box.innerHTML = count>1
+      ? `🕯️ <b>${count} dias</b> seguidos na Palavra`
+      : `🕯️ Que hoje comece sua caminhada diária`;
+  })();
+
+})();
+</script>
+</body>
+</html>
